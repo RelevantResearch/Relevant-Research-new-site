@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 export function Footer() {
   return (
@@ -8,9 +8,10 @@ export function Footer() {
       <div className="container px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">About Us</h3>
+            <h3 className="text-lg font-semibold">Relevant Research</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Relevant Research helps scholars amplify their research visibility and influence through innovative digital solutions.
+              Relevant Research helps scholars amplify their research visibility
+              and influence through innovative digital solutions.
             </p>
           </div>
           <div className="space-y-4">
@@ -54,5 +55,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
