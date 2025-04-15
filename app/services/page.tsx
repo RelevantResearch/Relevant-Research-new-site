@@ -61,7 +61,7 @@ export default function ServicesPage() {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen pt-24 pb-16 flex flex-col items-center justify-center"
+      className="min-h-screen pt-24 pb-16 flex flex-col items-center justify-start"
     >
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
