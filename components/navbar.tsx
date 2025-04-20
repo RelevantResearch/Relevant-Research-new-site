@@ -46,7 +46,7 @@ export function Navbar() {
             </Link>
           ))}
           <ModeToggle />
-          <Button>Get Started</Button>
+          {/* <Button>Get Started</Button> */}
         </div>
 
         {/* Mobile Navigation */}
