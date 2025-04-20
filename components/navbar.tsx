@@ -29,7 +29,9 @@ export function Navbar() {
             width={40}
             height={40}
           />
-          <span className="text-xl font-bold">Relevant Research</span>
+          <span className="text-xl font-bold gradient-text">
+            Relevant Research
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
