@@ -29,55 +29,41 @@ interface TeamMember {
 const team: TeamMember[] = [
   {
     id: 1,
-    name: "Dr. Sarah Chen",
-    role: "Head of Data Analysis",
-    department: "Data",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
-    bio: "Dr. Chen leads our data analysis initiatives with over 10 years of experience in research data visualization and analytics.",
+    name: "Austin Kocher",
+    role: "Public Impact Strategist",
+    department: "Administrative",
+    image: "/assets/team/austin.jpg",
+    bio: "",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
-      github: "https://github.com",
+      // github: "https://github.com",
     },
   },
   {
     id: 2,
-    name: "James Wilson",
-    role: "Lead Developer",
-    department: "Web",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    bio: "James specializes in creating innovative web solutions for research communication and data presentation.",
+    name: "Adam Sawyer",
+    role: "Data Analyst",
+    department: "Data Science",
+    image: "/assets/team/adam.jpg",
+    bio: "",
     social: {
+      twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
-      github: "https://github.com",
+      // github: "https://github.com",
     },
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
-    role: "Public Impact Strategist",
-    department: "Administrative",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face",
-    bio: "Emily crafts strategic solutions to help researchers maximize their public impact and engagement.",
+    name: "Riwaj Chalise",
+    role: "Web Developer",
+    department: "web",
+    image: "/assets/team/riwaj.jpeg",
+    bio: "",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
-    },
-  },
-  {
-    id: 3,
-    name: "Emily Rodriguez",
-    role: "Public Impact Strategist",
-    department: "Administrative",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face",
-    bio: "Emily crafts strategic solutions to help researchers maximize their public impact and engagement.",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      // github: "https://github.com",
     },
   },
 ];
