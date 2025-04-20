@@ -1,29 +1,34 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import { Button } from './ui/button'
-import { ModeToggle } from './mode-toggle'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Button } from "./ui/button";
+import { ModeToggle } from "./mode-toggle";
 
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'Our Work', href: '/work' },
-  { name: 'Team', href: '/team' },
-  { name: 'Contact', href: '/contact' },
-]
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Our Work", href: "/work" },
+  { name: "Team", href: "/team" },
+  { name: "Contact", href: "/contact" },
+];
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.svg" alt="Relevant Research" width={40} height={40} />
+          <Image
+            src="/logo.svg"
+            alt="Relevant Research"
+            width={40}
+            height={40}
+          />
           <span className="text-xl font-bold">Relevant Research</span>
         </Link>
 
@@ -43,9 +48,13 @@ export function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="flex items-center space-x-4 md:hidden">
+        <div className="flex  w-full items-center space-x-4 md:hidden">
           <ModeToggle />
-          <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
@@ -70,10 +79,10 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button className="w-full">Get Started</Button>
+            {/* <Button className="w-full">Get Started</Button> */}
           </div>
         </motion.div>
       )}
     </nav>
-  )
+  );
 }
