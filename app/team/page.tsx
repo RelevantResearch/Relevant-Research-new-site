@@ -45,7 +45,7 @@ const team: TeamMember[] = [
     name: "Adam Sawyer",
     role: "Data Analyst",
     department: "Data Science",
-    image: "/assets/team/adam.jpg",
+    image: "/assets/team/adam1.jpg",
     bio: "",
     social: {
       twitter: "https://twitter.com",
