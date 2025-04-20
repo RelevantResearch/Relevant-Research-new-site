@@ -68,33 +68,33 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="py-12 flex items-center justify-center">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: "easeOut",
-                delay: index * 0.2, // staggered animation
-              }}
-              viewport={{ once: true }}
-            >
-              <Card>
-                <CardContent className="flex flex-col items-center justify-center p-6">
-                  <div className="text-3xl font-bold">{stat.value}</div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {stat.label}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="container px-4 md:px-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.2, // staggered animation
+                }}
+                viewport={{ once: true }}
+              >
+                <Card>
+                  <CardContent className="flex flex-col items-center justify-center p-6">
+                    <div className="text-3xl font-bold">{stat.value}</div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {stat.label}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* About Section */}
       <section id="about" className="py-16">
@@ -152,7 +152,7 @@ export default function Home() {
               className="lg:w-1/2 flex justify-center"
             >
               <Image
-                src="/assets/images/about-us.jpg"
+                src="/assets/images/about_us.png"
                 alt="About Us"
                 width={500}
                 height={400}

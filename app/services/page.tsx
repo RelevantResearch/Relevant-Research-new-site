@@ -108,11 +108,11 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-6" asChild>
+                  {/* <Button className="mt-6" asChild>
                     <Link href="/contact">
                       Get Started <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
-                  </Button>
+                  </Button> */}
                 </Card>
               </motion.div>
             );
