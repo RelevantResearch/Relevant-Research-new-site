@@ -27,38 +27,82 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Research Data Visualization Platform",
-    description: "Interactive platform for visualizing complex research data",
-    category: "Data Analysis",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    link: "https://example.com/project1",
-    client: "University Research Department",
-    challenge: "Transform complex research data into accessible visualizations",
-    solution:
-      "Created an interactive dashboard with real-time data visualization",
+    title: "Dr. John Torrens",
+    description: "Entrepreneur, Educator, TEDx Speaker, Author",
+    category: "web development",
+    image: "/assets/portfolio/john.png",
+    link: "https://johnmtorrens.com/",
+    client: "",
+    challenge: "",
+    solution: "",
   },
   {
     id: 2,
-    title: "Academic Portfolio Website",
-    description: "Modern portfolio website for academic researchers",
-    category: "Web Development",
-    image:
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop",
-    client: "Independent Researcher",
-    challenge: "Showcase academic work in an engaging way",
-    solution: "Developed a responsive website with publication highlights",
+    title: "Dr. Penelope Anthias",
+    description: "Assoc. Prof. of Geography, Durham University",
+    category: "web development",
+    image: "/assets/portfolio/dr.png",
+    link: "https://penelopeanthias.com/",
+    client: "",
+    challenge: "",
+    solution: "",
   },
   {
     id: 3,
-    title: "Research Impact Campaign",
-    description: "Strategic campaign to increase research visibility",
-    category: "Public Impact",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-    client: "Research Institute",
-    challenge: "Increase public engagement with research findings",
-    solution: "Implemented multi-channel outreach strategy",
+    title: "Micheal Paarlberg",
+    description:
+      "Assoc. Prof. of Political Science, Virginia Commonwealth University",
+    category: "web development",
+    image: "/assets/portfolio/michael.png",
+    link: "https://michaelpaarlberg.org",
+    client: "",
+    challenge: "",
+    solution: "",
+  },
+  {
+    id: 4,
+    title: "Julio Fernando Salas",
+    description:
+      "PhD Student & Chancellor's Fellow, Dept. of Sociology, UC Berkeley",
+    category: "web development",
+    image: "/assets/portfolio/michael.png",
+    link: "https://juliofernandosalas.com",
+    client: "",
+    challenge: "",
+    solution: "",
+  },
+  {
+    id: 5,
+    title: "Lisa Guerra",
+    description: "Lisa War",
+    category: "web development",
+    image: "/assets/portfolio/lisawar.png",
+    link: "https://lisawarlaw.com/",
+    client: "",
+    challenge: "",
+    solution: "",
+  },
+  {
+    id: 6,
+    title: "Walter Julio Nicholls",
+    description: "UCI Department of Urban Planning and Public Policy",
+    category: "web development",
+    image: "/assets/portfolio/walter.png",
+    link: "https://walternicholls.com",
+    client: "",
+    challenge: "",
+    solution: "",
+  },
+  {
+    id: 7,
+    title: "Lory Rosenberg",
+    description: "",
+    category: "web development",
+    image: "/assets/portfolio/loryd.png",
+    link: "https://walternicholls.com",
+    client: "",
+    challenge: "",
+    solution: "",
   },
 ];
 
@@ -134,7 +178,7 @@ export default function WorkPage() {
               </div>
             )}
             <div className="space-y-4">
-              <div>
+              {/* <div>
                 <h4 className="font-semibold">Client</h4>
                 <p className="text-muted-foreground">
                   {selectedProject?.client}
@@ -151,7 +195,7 @@ export default function WorkPage() {
                 <p className="text-muted-foreground">
                   {selectedProject?.solution}
                 </p>
-              </div>
+              </div> */}
               {selectedProject?.link && (
                 <Button asChild className="w-full">
                   <a
@@ -159,7 +203,7 @@ export default function WorkPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View Project <ExternalLink className="ml-2 h-4 w-4" />
+                    View Website <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
               )}
