@@ -7,7 +7,7 @@
       "esnext"
     ],
     "allowJs": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true, // Avoid issues with third-party types
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
