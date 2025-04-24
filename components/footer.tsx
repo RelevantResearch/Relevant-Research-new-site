@@ -35,8 +35,7 @@ export function Footer() {
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
               <li>Email: contact@relevantresearch.com</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Address: 123 Research Ave, Suite 100</li>
+              <li>Address: Maryland, USA</li>
             </ul>
           </div>
           <div className="space-y-4">

@@ -50,7 +50,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="flex  w-full items-center space-x-4 md:hidden">
+        <div className="flex  items-center space-x-4 md:hidden">
           <ModeToggle />
           <Button
             variant="ghost"
@@ -81,7 +81,6 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            {/* <Button className="w-full">Get Started</Button> */}
           </div>
         </motion.div>
       )}
