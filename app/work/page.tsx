@@ -135,9 +135,9 @@ export default function WorkPage() {
   );
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-24 pb-16">
+    <div className="flex flex-col items-center justify-start min-h-screen pt-15 pb-16">
       {/* Research Papers Section */}
-      <div className="mt-24 w-full">
+      <div className="mt-24 w-full pb-10">
         <div className="space-y-4 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
