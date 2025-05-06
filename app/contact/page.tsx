@@ -126,7 +126,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             className="rounded-2xl border bg-card p-8"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
@@ -175,11 +175,11 @@ export default function ContactPage() {
                   className="min-h-[150px]"
                 />
               </div>
-              <ReCAPTCHA
+              {/* <ReCAPTCHA
                 ref={recaptchaRef}
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
                 size="invisible"
-              />
+              /> */}
               <Button
                 className="w-full"
                 size="lg"
