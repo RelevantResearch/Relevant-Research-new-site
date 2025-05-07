@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Dialog,
   DialogContent,
@@ -134,86 +135,153 @@ export default function WorkPage() {
     null,
   );
 
+  const isMobile = useIsMobile();
+
   return (
     <div className="flex flex-col items-center justify-start min-h-screen pt-15 pb-16">
-      {/* Research Papers Section */}
-      <div className="mt-24 w-full pb-10">
-        <div className="space-y-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
-          >
-            Research <span className="gradient-text">Papers</span>
-          </motion.h2>
-          <p className="max-w-[700px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
-            Read our published research papers and methodological frameworks.
-          </p>
-        </div>
-
-        <div className="mt-16 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl px-4">
-          {researchPapers.map((paper) => (
-            <motion.div
-              key={paper.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedPaper(paper)}
-              className="group cursor-pointer overflow-hidden rounded-xl border bg-card shadow-sm hover:shadow-lg transition-all"
-            >
-              <div className="p-6">
-                <div className="mb-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-800 dark:bg-sky-900/30 dark:text-sky-300">
-                  {paper.category}
-                </div>
-                <h3 className="mb-2 text-xl font-bold">{paper.title}</h3>
-                <p className="text-muted-foreground line-clamp-4">
-                  {paper.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Research Paper Dialog */}
-        <Dialog
-          open={!!selectedPaper}
-          onOpenChange={() => setSelectedPaper(null)}
-        >
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>{selectedPaper?.title}</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <p className="text-muted-foreground">
-                {selectedPaper?.description}
+      <>
+        {isMobile ? (
+          // Mobile layout
+          <div className="mt-24 w-full pb-10">
+            <div className="space-y-4 text-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-3xl font-bold tracking-tight sm:text-4xl"
+              >
+                Research <span className="gradient-text">Papers</span>
+              </motion.h2>
+              <p className="max-w-[700px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
+                Read our published research papers and methodological
+                frameworks.
               </p>
-              {selectedPaper?.downloadLink && (
-                <Button asChild className="w-full">
-                  <a
-                    href={selectedPaper.downloadLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download PDF <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              )}
-              {selectedPaper?.github && (
-                <Button asChild variant="outline" className="w-full">
-                  <a
-                    href={selectedPaper.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View on GitHub <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              )}
             </div>
-          </DialogContent>
-        </Dialog>
-      </div>
 
+            <div className="mt-16 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
+              {researchPapers.map((paper) => (
+                <motion.div
+                  key={paper.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -5 }}
+                  onClick={() => setSelectedPaper(paper)}
+                  className="group cursor-pointer overflow-hidden rounded-xl border bg-card shadow-sm hover:shadow-lg transition-all"
+                >
+                  <div className="p-6">
+                    <div className="mb-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-800 dark:bg-sky-900/30 dark:text-sky-300">
+                      {paper.category}
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold">{paper.title}</h3>
+                    <p className="text-muted-foreground line-clamp-4">
+                      {paper.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <Dialog
+              open={!!selectedPaper}
+              onOpenChange={() => setSelectedPaper(null)}
+            >
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>{selectedPaper?.title}</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <p className="text-muted-foreground">
+                    {selectedPaper?.description}
+                  </p>
+                  {selectedPaper?.downloadLink && (
+                    <Button asChild className="w-full">
+                      <a
+                        href={selectedPaper.downloadLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Download PDF <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
+                  {selectedPaper?.github && (
+                    <Button asChild variant="outline" className="w-full">
+                      <a
+                        href={selectedPaper.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View on GitHub <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
+        ) : (
+          // Desktop layout
+          <div className="mt-24 w-[70%] pb-10 mx-auto">
+            <div className="space-y-4 text-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-3xl font-bold tracking-tight sm:text-4xl"
+              >
+                Research <span className="gradient-text">Papers</span>
+              </motion.h2>
+              <p className="max-w-[700px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
+                Read our published research papers and methodological
+                frameworks.
+              </p>
+            </div>
+
+            <div className="mt-16 grid gap-8 px-4">
+              {researchPapers.map((paper) => (
+                <motion.div
+                  key={paper.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -5 }}
+                  className="group cursor-default overflow-hidden rounded-xl border bg-card shadow-sm hover:shadow-lg transition-all"
+                >
+                  <div className="p-6 space-y-4">
+                    <div className="inline-block rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-800 dark:bg-sky-900/30 dark:text-sky-300">
+                      {paper.category}
+                    </div>
+                    <h3 className="text-xl font-bold">{paper.title}</h3>
+                    <p className="text-muted-foreground">{paper.description}</p>
+
+                    {paper.downloadLink && (
+                      <Button asChild className="w-full">
+                        <a
+                          href={paper.downloadLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Download PDF <ExternalLink className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+
+                    {paper.github && (
+                      <Button asChild variant="outline" className="w-full">
+                        <a
+                          href={paper.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View on GitHub{" "}
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+      </>
       {/* Our Work segment */}
       <div className=" flex flex-col items-center justify-center container px-10 md:px-6">
         <div className=" space-y-4 text-center">
