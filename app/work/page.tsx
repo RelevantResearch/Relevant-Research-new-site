@@ -290,7 +290,7 @@ export default function WorkPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
           >
-            Our <span className="gradient-text">Work</span>
+            Our <span className="gradient-text">Web Projects</span>
           </motion.h1>
           <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
             Explore our portfolio of successful projects where we've helped
