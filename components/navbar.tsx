@@ -11,7 +11,7 @@ import { ModeToggle } from "./mode-toggle";
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
-  { name: "Projects", href: "/work" },
+  { name: "Our Work", href: "/work" },
   { name: "Team", href: "/team" },
   { name: "Contact", href: "/contact" },
 ];

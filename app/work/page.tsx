@@ -81,17 +81,17 @@ const projects: Project[] = [
     challenge: "",
     solution: "",
   },
-  {
-    id: 5,
-    title: "Lisa Guerra",
-    description: "Lisa War",
-    category: "web development",
-    image: "/assets/portfolio/lisawar.png",
-    link: "https://lisawarlaw.com/",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
+  // {
+  //   id: 5,
+  //   title: "Lisa Guerra",
+  //   description: "Lisa War",
+  //   category: "web development",
+  //   image: "/assets/portfolio/lisawar.png",
+  //   link: "https://lisawarlaw.com/",
+  //   client: "",
+  //   challenge: "",
+  //   solution: "",
+  // },
   {
     id: 6,
     title: "Walter Julio Nicholls",
@@ -103,29 +103,29 @@ const projects: Project[] = [
     challenge: "",
     solution: "",
   },
-  {
-    id: 7,
-    title: "Lory Rosenberg",
-    description: "",
-    category: "web development",
-    image: "/assets/portfolio/loryd.png",
-    link: "https://walternicholls.com",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
+  // {
+  //   id: 7,
+  //   title: "Lory Rosenberg",
+  //   description: "",
+  //   category: "web development",
+  //   image: "/assets/portfolio/loryd.png",
+  //   link: "https://walternicholls.com",
+  //   client: "",
+  //   challenge: "",
+  //   solution: "",
+  // },
 ];
 
 const researchPapers: ResearchPaper[] = [
   {
     id: 1,
-    title: "IMMIGRANT DETENTION METHODOLOGY PAPER",
-    description: `Executive Summary: In this paper, Relevant Research provides a methodology for estimating recent daily averages of ICE's detained population by facility based on the Congressionally mandated detention data released by the agency on a biweekly basis. On the surface, ICE's detention data spreadsheet provides a recent national total for its detained population and facility-level population averages calculated as an average daily population for the fiscal year to date (starting on October 1)—but no specific recent numbers for each detention facility. The methodology described below does not answer the question of precisely how many people are in an ICE facility at a recent point in time, but it does provide an estimated average daily population for the most recent interval between ICE data releases. Depending on each facility and how significantly ICE detention numbers fluctuate, ICE's reported average daily population ("reported ADP") and our estimated recent average daily population ("interval ADP") diverge to varying degrees.`,
+    title:
+      "Interval ADP: A Method for Estimating Recent Populations at ICE Detention Facilities",
+    description: `Executive Summary: Immigration and Customs Enforcement (ICE) regularly releases data on the total number of immigrants currently in detention nationwide and the average daily population (ADP) of individual detention facilities over the fiscal year to date (FYTD). ICE does not provide up to-date data on the total currently detained population at individual detention facilities — an important yet missing data point. In this paper, Relevant Research outlines a method for estimating recent daily average populations at individual detention facilities. We refer to ICE’s facility-level ADP estimates as “Reported ADP” and we refer our facility-level ADP estimates as “Interval ADP”, since our estimates provide the ADP for the time period between ICE’s previous detention spreadsheet and the current detention spreadsheet. As we show in this paper, sudden spikes or dips in ICE’s detained population at specific facilities may result in significant differences between Reported ADP and Interval ADP. Thus, calculating interval ADP provides facility-level estimates that are closer to current reality than ICE’s Reported ADP.`,
     category: "research",
-    github:
-      "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    downloadLink:
-      "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    // github:
+    //   "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    downloadLink: "/assets/pdf/methodology_writeup.pdf",
   },
 ];
 
@@ -196,7 +196,7 @@ export default function WorkPage() {
                     <Button asChild className="w-full">
                       <a
                         href={selectedPaper.downloadLink}
-                        target="_blank"
+                        download
                         rel="noopener noreferrer"
                       >
                         Download PDF <ExternalLink className="ml-2 h-4 w-4" />

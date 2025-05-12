@@ -38,7 +38,7 @@ export function Footer() {
               <li>Address: Maryland, USA</li>
             </ul>
           </div>
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h3 className="text-lg font-semibold">Newsletter</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Subscribe to our newsletter for updates and insights.
@@ -47,7 +47,7 @@ export function Footer() {
               <Input placeholder="Enter your email" type="email" />
               <Button>Subscribe</Button>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="mt-8 border-t pt-8 text-center text-sm text-gray-500 dark:text-gray-400">
           © {new Date().getFullYear()} Relevant Research. All rights reserved.
