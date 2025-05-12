@@ -7,17 +7,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
-  const stats = [
-    { value: "50+", label: "Projects Completed" },
-    { value: "100%", label: "Client Satisfaction" },
-    { value: "24/7", label: "Support" },
-    { value: "3", label: "Expert Departments" },
-  ];
+  // const stats = [
+  //   { value: "50+", label: "Projects Completed" },
+  //   { value: "100%", label: "Client Satisfaction" },
+  //   { value: "24/7", label: "Support" },
+  //   { value: "3", label: "Expert Departments" },
+  // ];
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="flex items-center justify-center min-h-screen">
-        <div className="container px-4 py-3 md:px-6">
+        <div className="container px-4  md:px-6">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_600px] lg:gap-12">
             {/* Hero Text */}
             <motion.div
@@ -67,7 +67,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 flex items-center justify-center">
+      {/* <section className="py-12 flex items-center justify-center">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat, index) => (
@@ -94,10 +94,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* About Section */}
-      <section id="about" className="py-16">
+      <section id="about" className="py-5">
         <div className="container px-4 md:px-6 mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
