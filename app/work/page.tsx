@@ -75,7 +75,7 @@ const projects: Project[] = [
     description:
       "PhD Student & Chancellor's Fellow, Dept. of Sociology, UC Berkeley",
     category: "web development",
-    image: "/assets/portfolio/michael.png",
+    image: "/assets/portfolio/julio.png",
     link: "https://juliofernandosalas.com",
     client: "",
     challenge: "",
@@ -142,7 +142,7 @@ export default function WorkPage() {
       <>
         {isMobile ? (
           // Mobile layout
-          <div className="mt-24 w-full pb-10">
+          <div className="mt-24 w-full  pb-10">
             <div className="space-y-4 text-center">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -184,7 +184,7 @@ export default function WorkPage() {
               open={!!selectedPaper}
               onOpenChange={() => setSelectedPaper(null)}
             >
-              <DialogContent className="max-w-2xl">
+              <DialogContent className="max-w-2xl h-screen overflow-y-auto ">
                 <DialogHeader>
                   <DialogTitle>{selectedPaper?.title}</DialogTitle>
                 </DialogHeader>
