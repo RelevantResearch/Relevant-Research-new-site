@@ -81,6 +81,17 @@ const projects: Project[] = [
     challenge: "",
     solution: "",
   },
+  {
+    id: 5,
+    title: "American Families United",
+    description: "Website for the American Families United ",
+    category: "web development",
+    image: "/assets/portfolio/afu.jpg",
+    link: "https://juliofernandosalas.com",
+    client: "",
+    challenge: "",
+    solution: "",
+  },
   // {
   //   id: 5,
   //   title: "Lisa Guerra",
