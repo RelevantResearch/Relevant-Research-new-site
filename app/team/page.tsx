@@ -35,8 +35,8 @@ const team: TeamMember[] = [
     image: "/assets/team/austin.jpg",
     bio: "",
     social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      // twitter: "https://twitter.com",
+      linkedin: "https://www.linkedin.com/in/austinkocher/",
       // github: "https://github.com",
     },
   },
@@ -61,8 +61,8 @@ const team: TeamMember[] = [
     image: "/assets/team/riwaj.jpeg",
     bio: "",
     social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      // twitter: "https://twitter.com",
+      linkedin: "https://www.linkedin.com/in/riwajchalise/",
       // github: "https://github.com",
     },
   },
