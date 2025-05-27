@@ -49,7 +49,7 @@ const team: TeamMember[] = [
     bio: "",
     social: {
       twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      linkedin: "https://www.linkedin.com/in/adam-sawyer-tan/",
       // github: "https://github.com",
     },
   },
