@@ -123,7 +123,7 @@ const team: TeamMember[] = [
   {
     id: 8,
     name: "Pranisha Acharya",
-    role: "",
+    role: "People and Projects Coordinator",
     department: "",
     image: "/assets/team/pranisha.jpeg",
     bio: "",
