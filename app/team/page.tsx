@@ -106,6 +106,34 @@ const team: TeamMember[] = [
       // github: "https://github.com",
     },
   },
+  {
+    id: 7,
+    name: "Srijana Shrestha",
+    role: "",
+    department: "",
+    image: "/assets/team/srijana.jpeg",
+    bio: "",
+    social: {
+      // twitter: "https://twitter.com",
+      // linkedin:
+      // "https://www.linkedin.com/in/sandesh-nilas-khatiwada-9b503b280/",
+      // github: "https://github.com",
+    },
+  },
+  {
+    id: 8,
+    name: "Pranisha Acharya",
+    role: "",
+    department: "",
+    image: "/assets/team/pranisha.jpeg",
+    bio: "",
+    social: {
+      // twitter: "https://twitter.com",
+      // linkedin:
+      // "https://www.linkedin.com/in/sandesh-nilas-khatiwada-9b503b280/",
+      // github: "https://github.com",
+    },
+  },
 ];
 
 export default function TeamPage() {
