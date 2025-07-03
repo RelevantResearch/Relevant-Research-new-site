@@ -81,6 +81,19 @@ const team: TeamMember[] = [
   },
   {
     id: 5,
+    name: "Sunita Kunwar",
+    role: "Data Analyst",
+    department: "Data Science",
+    image: "/assets/team/sunita.jpeg",
+    bio: "",
+    social: {
+      // twitter: "https://twitter.com",
+      linkedin: "https://www.linkedin.com/in/michael-ale-315bbb1bb/",
+      // github: "https://github.com",
+    },
+  },
+  {
+    id: 6,
     name: "Bishal Timsina",
     role: "Web Developer",
     department: "Web Development",
@@ -93,7 +106,7 @@ const team: TeamMember[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     name: "Sandesh Nilas Khatiwada",
     role: "Web Developer",
     department: "Web Development",
@@ -107,7 +120,7 @@ const team: TeamMember[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     name: "Srijana Shrestha",
     role: "",
     department: "",
@@ -121,7 +134,7 @@ const team: TeamMember[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     name: "Pranisha Acharya",
     role: "People and Projects Coordinator",
     department: "",
