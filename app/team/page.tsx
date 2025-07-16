@@ -88,7 +88,7 @@ const team: TeamMember[] = [
     bio: "",
     social: {
       // twitter: "https://twitter.com",
-      linkedin: "https://www.linkedin.com/in/michael-ale-315bbb1bb/",
+      linkedin: "https://www.linkedin.com/in/sunita-kunwar-919b67151/",
       // github: "https://github.com",
     },
   },
