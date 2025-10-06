@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-export function useIsMobile(breakpoint = 768) {
+export function useIsMobile() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        // Check if window exists (client-side only)
+        // Function to check if screen width is mobile
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < breakpoint);
+            setIsMobile(window.innerWidth < 768); // 768px is a common breakpoint for mobile
         };
 
-        checkMobile(); // Check on mount
+        // Check on mount
+        checkMobile();
 
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, [breakpoint]);
+        // Add event listener for window resize
+        window.addEventListener('resize', checkMobile);
+
+        // Cleanup
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     return isMobile;
 }

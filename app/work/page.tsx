@@ -149,7 +149,7 @@ export default function WorkPage() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-15 pb-16">
+    <div className="flex flex-col items-center justify-start min-h-screen pt-24 pb-16">
       <>
         {isMobile ? (
           // Mobile layout

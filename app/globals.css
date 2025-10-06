@@ -68,7 +68,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -87,4 +91,34 @@
 
 .service-card:hover::before {
   @apply opacity-100;
+}
+
+/* Additional animations and smooth effects */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-background {
+  background: linear-gradient(135deg, 
+    hsl(var(--background)) 0%,
+    hsl(var(--background)) 50%, 
+    hsl(25 100% 96%) 100%);
+}
+
+.dark .hero-background {
+  background: linear-gradient(135deg, 
+    hsl(var(--background)) 0%,
+    hsl(var(--background)) 50%, 
+    hsl(25 100% 4%) 100%);
 }
