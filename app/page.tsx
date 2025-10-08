@@ -27,7 +27,7 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="inline-flex items-center rounded-full border bg-orange-50 dark:bg-orange-950/20 px-4 py-2 text-sm font-medium text-orange-600 dark:text-orange-400 shadow-sm"
                 >
-                  🚀 Transforming Research Impact
+                  Transforming Research Impact
                 </motion.div>
 
                 <h1 className="text-4xl font-bold tracking-tight lg:text-6xl xl:text-7xl leading-tight">
