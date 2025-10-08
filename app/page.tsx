@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { NewsPortal } from "@/types/news-portals";
+import newsPortalsData from "@/data/news-portals.json";
 
 export default function Home() {
   return (
@@ -61,7 +63,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-orange-200 hover:bg-orange-50"
+                  className="hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:border-orange-800"
                   asChild
                 >
                   <Link href="/services">Explore Services</Link>
@@ -168,7 +170,7 @@ export default function Home() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-orange-200 hover:bg-orange-50"
+                    className="hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:border-orange-800"
                     asChild
                   >
                     <Link href="/team">Meet Our Team</Link>
@@ -180,45 +182,101 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
+      <section className="py-20 bg-gradient-to-b from-background to-orange-50/20 dark:to-orange-950/10">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto space-y-8"
+            className="text-center space-y-12"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold leading-tight">
-              Ready to Amplify Your Research Impact?
-            </h2>
-            <p className="text-lg text-orange-100 leading-relaxed">
-              Let&apos;s collaborate to transform your research into meaningful
-              digital experiences that reach broader audiences and create
-              lasting impact.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-white text-orange-600 hover:bg-orange-50 shadow-lg"
-                asChild
-              >
-                <Link href="/contact">
-                  Start Your Project
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-orange-600 transition-all duration-300"
-                asChild
-              >
-                <Link href="/work">View Our Portfolio</Link>
-              </Button>
+            <div className="space-y-4">
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
+                Featured in Leading News Portals
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Our research and expertise have been recognized by major news
+                organizations worldwide
+              </p>
             </div>
+
+            {/* Logos Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 items-center justify-items-center max-w-4xl mx-auto">
+              {(newsPortalsData as NewsPortal[]).map((portal, index) => (
+                <motion.div
+                  key={portal.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group cursor-pointer"
+                  onClick={() =>
+                    window.open(portal.url, "_blank", "noopener,noreferrer")
+                  }
+                  title={`Visit ${portal.name} - ${portal.description}`}
+                >
+                  {portal.logoUrl ? (
+                    // Image-based logo in original colors
+                    <div className="w-40 h-16 rounded flex items-center justify-center bg-white/90 backdrop-blur-sm shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                      <Image
+                        src={portal.logoUrl}
+                        alt={`${portal.name} logo`}
+                        width={160}
+                        height={64}
+                        className="max-w-full max-h-full object-contain p-2"
+                        priority={index < 3}
+                      />
+                    </div>
+                  ) : (
+                    // Text-based logo (fallback)
+                    <div
+                      className={`${portal.width} h-12 bg-gradient-to-r ${
+                        portal.colors.from === portal.colors.to
+                          ? `bg-${portal.colors.from}`
+                          : `from-${portal.colors.from} to-${portal.colors.to}`
+                      } rounded flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300 hover:scale-110`}
+                    >
+                      <span
+                        className={`text-white font-bold ${portal.textSize}`}
+                      >
+                        {portal.displayName}
+                      </span>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Call to Action */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="pt-8"
+            >
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg"
+                  asChild
+                >
+                  <Link href="/contact">
+                    Start Your Project
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:border-orange-800"
+                  asChild
+                >
+                  <Link href="/work">View Our Portfolio</Link>
+                </Button>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

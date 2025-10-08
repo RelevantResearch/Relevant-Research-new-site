@@ -42,7 +42,7 @@ function NewsRow({ news, index }: NewsRowProps) {
     >
       <div className="flex items-center gap-6 p-6 rounded-lg border bg-card hover:shadow-md transition-all duration-300 hover:border-orange-200 dark:hover:border-orange-800">
         {/* Image */}
-        {news.image && (
+        {/* {news.image && (
           <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
             <Image
               src={news.image}
@@ -52,7 +52,7 @@ function NewsRow({ news, index }: NewsRowProps) {
               sizes="96px"
             />
           </div>
-        )}
+        )} */}
 
         {/* Content */}
         <div className="flex-1 min-w-0 space-y-3">
@@ -71,41 +71,42 @@ function NewsRow({ news, index }: NewsRowProps) {
 
           {/* Title */}
           <h3 className="text-lg font-semibold leading-tight group-hover:text-orange-600 transition-colors overflow-hidden">
-            <span className="block leading-tight" style={{ 
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden'
-            }}>
+            <span
+              className="block leading-tight"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
               {news.title}
             </span>
           </h3>
 
           {/* Description */}
           <p className="text-muted-foreground text-sm leading-relaxed overflow-hidden">
-            <span className="block leading-relaxed" style={{ 
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden'
-            }}>
+            <span
+              className="block leading-relaxed"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
               {news.description}
             </span>
           </p>
 
           {/* Action */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            {/* <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <Building2 className="w-4 h-4" />
               <span className="font-medium">{news.domain}</span>
-            </div>
-            
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="group/btn"
-            >
+            </div> */}
+
+            <Button asChild variant="outline" size="sm" className="group/btn">
               <Link href={news.url} target="_blank" rel="noopener noreferrer">
                 Read Article
                 <ExternalLink className="w-3 h-3 ml-2 transition-transform group-hover/btn:translate-x-1" />
