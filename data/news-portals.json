@@ -1,0 +1,44 @@
+[
+    {
+        "id": "guardian",
+        "name": "The Guardian",
+        "displayName": "Guardian",
+        "url": "https://www.theguardian.com/us-news/2025/sep/26/ice-detention-death-toll-trump",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/The_Guardian_2018.svg/500px-The_Guardian_2018.svg.png",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-700"
+        },
+        "textSize": "text-sm",
+        "width": "w-28",
+        "description": "The Guardian - Independent journalism"
+    },
+    {
+        "id": "cbs42",
+        "name": "CBS42",
+        "displayName": "CBS42",
+        "url": "https://www.cbs42.com/border-report-tour/new-online-data-dashboard-tracks-ice-arrests/",
+        "logoUrl": "https://www.cbs42.com/wp-content/uploads/sites/81/2019/05/cropped-cbs204220logo20for20website20cbs42.com_1541089550527.png_60904154_ver1.0.png",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-800"
+        },
+        "textSize": "text-lg",
+        "width": "w-28",
+        "description": "CBS42 - Local news and information"
+    },
+    {
+        "id": "huffpost",
+        "name": "HuffPost",
+        "displayName": "HuffPost",
+        "url": "https://www.huffpost.com/entry/alligator-alcatraz-immigration-jail_n_68d6a319e4b0185d00688297",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/HuffPost.svg/500px-HuffPost.svg.png",
+        "colors": {
+            "from": "green-600",
+            "to": "green-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-32",
+        "description": "HuffPost - News and opinion"
+    }
+]

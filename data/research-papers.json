@@ -1,0 +1,23 @@
+[
+    {
+        "id": "interval-adp-methodology",
+        "title": "Interval ADP: A Method for Estimating Recent Populations at ICE Detention Facilities",
+        "description": "Immigration and Customs Enforcement (ICE) regularly releases data on the total number of immigrants currently in detention nationwide and the average daily population (ADP) of individual detention facilities over the fiscal year to date (FYTD). ICE does not provide up-to-date data on the total currently detained population at individual detention facilities — an important yet missing data point. In this paper, Relevant Research outlines a method for estimating recent daily average populations at individual detention facilities.",
+        "shortDescription": "A novel methodology for estimating real-time detention facility populations using interval analysis.",
+        "category": "Research Methodology",
+        "downloadLink": "/assets/pdf/methodology_writeup.pdf",
+        "authors": [
+            "Relevant Research Team"
+        ],
+        "year": "2024",
+        "status": "published",
+        "abstract": "We refer to ICE's facility-level ADP estimates as 'Reported ADP' and we refer our facility-level ADP estimates as 'Interval ADP', since our estimates provide the ADP for the time period between ICE's previous detention spreadsheet and the current detention spreadsheet. As we show in this paper, sudden spikes or dips in ICE's detained population at specific facilities may result in significant differences between Reported ADP and Interval ADP. Thus, calculating interval ADP provides facility-level estimates that are closer to current reality than ICE's Reported ADP.",
+        "keywords": [
+            "Immigration",
+            "Detention",
+            "Data Analysis",
+            "Population Estimation"
+        ],
+        "citation": "Relevant Research Team. (2024). Interval ADP: A Method for Estimating Recent Populations at ICE Detention Facilities."
+    }
+]

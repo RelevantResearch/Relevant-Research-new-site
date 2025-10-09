@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-news": "node scripts/generate-news.js",
+    "prebuild": "npm run generate-news"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -40,9 +42,7 @@
     "@radix-ui/react-tooltip": "^1.1.2",
     "@types/node": "20.6.2",
     "@types/react-dom": "18",
-    "@types/recharts": "^2.0.1",
     "autoprefixer": "10.4.15",
-    "axios": "^1.8.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
@@ -63,7 +63,6 @@
     "react-hook-form": "^7.53.0",
     "react-intersection-observer": "^9.8.1",
     "react-resizable-panels": "^2.1.7",
-    "recharts": "^2.15.3",
     "scheduler": "0.20.2",
     "sonner": "^2.0.3",
     "tailwind-merge": "^2.5.2",

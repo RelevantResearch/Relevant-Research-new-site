@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "url": "https://www.huffpost.com/entry/alligator-alcatraz-immigration-jail_n_68d6a319e4b0185d00688297",
+    "title": "Alligator Alcatraz Is A New Kind Of Immigration Jail – And It’s Multiplying | HuffPost Latest News",
+    "description": "A wave of new immigration jails is drawing widespread criticism for terrible conditions and restricted access to legal resources.",
+    "image": "https://img.huffingtonpost.com/asset/68d431e5180000e9ab5d00f9.jpg?cache=5TP5LH9y0d&amp;ops=500_281%2Cscalefit_1200_630",
+    "domain": "huffpost.com",
+    "publishDate": "2025-10-08"
+  },
+  {
+    "id": 2,
+    "url": "https://www.theguardian.com/us-news/2025/sep/26/ice-detention-death-toll-trump",
+    "title": "Ice detainees death toll reaches 16 amid concerns over ‘horrendous’ conditions | US immigration | The Guardian",
+    "description": "Rising toll worries activists as mass detention in US increases after Trump returned to White House in January",
+    "image": "https://i.guim.co.uk/img/media/849f08e65dfe2f6afc5bdfea043c67db9525cf4b/0_0_5718_4576/master/5718.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=25446f6b728703d68a520a3fff88c696",
+    "domain": "theguardian.com",
+    "publishDate": "2025-10-08"
+  },
+  {
+    "id": 3,
+    "url": "https://www.cbs42.com/border-report-tour/new-online-data-dashboard-tracks-ice-arrests/",
+    "title": "New Online Data Dashboard Tracks Ice Arrests",
+    "description": "Article from cbs42.com - Content temporarily unavailable",
+    "image": null,
+    "domain": "cbs42.com",
+    "publishDate": "2025-10-08",
+    "error": true
+  }
+]

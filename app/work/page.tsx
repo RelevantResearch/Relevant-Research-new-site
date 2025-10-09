@@ -1,144 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, X } from "lucide-react";
+import {
+  ExternalLink,
+  Download,
+  Calendar,
+  Users,
+  Code,
+  BookOpen,
+  ArrowRight,
+  Globe,
+  Database,
+  Presentation,
+} from "lucide-react";
 import Image from "next/image";
+import { Project, ResearchPaper } from "@/types/work";
+import projectsData from "@/data/projects.json";
+import researchData from "@/data/research-papers.json";
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  image?: string;
-  link?: string;
-  client: string;
-  challenge: string;
-  solution: string;
-}
-interface ResearchPaper {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  image?: string;
-  github?: string;
-  downloadLink?: string;
-}
+const categoryIcons = {
+  "Web Development": Globe,
+  "Data Visualization": Presentation,
+  "Data Analytics": Database,
+  "Research Methodology": BookOpen,
+};
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Dr. John Torrens",
-    description: "Entrepreneur, Educator, TEDx Speaker, Author",
-    category: "web development",
-    image: "/assets/portfolio/john.png",
-    link: "https://johnmtorrens.com/",
-    client: "",
-    challenge: "",
-    solution: "",
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
   },
-  {
-    id: 2,
-    title: "Dr. Penelope Anthias",
-    description: "Assoc. Prof. of Geography, Durham University",
-    category: "web development",
-    image: "/assets/portfolio/dr.png",
-    link: "https://penelopeanthias.com/",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 3,
-    title: "Micheal Paarlberg",
-    description:
-      "Assoc. Prof. of Political Science, Virginia Commonwealth University",
-    category: "web development",
-    image: "/assets/portfolio/michael.png",
-    link: "https://michaelpaarlberg.org",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 4,
-    title: "Julio Fernando Salas",
-    description:
-      "PhD Student & Chancellor's Fellow, Dept. of Sociology, UC Berkeley",
-    category: "web development",
-    image: "/assets/portfolio/julio.png",
-    link: "https://juliofernandosalas.com",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 5,
-    title: "American Families United",
-    description: "Website for the American Families United ",
-    category: "web development",
-    image: "/assets/portfolio/afu.jpg",
-    link: "https://juliofernandosalas.com",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  // {
-  //   id: 5,
-  //   title: "Lisa Guerra",
-  //   description: "Lisa War",
-  //   category: "web development",
-  //   image: "/assets/portfolio/lisawar.png",
-  //   link: "https://lisawarlaw.com/",
-  //   client: "",
-  //   challenge: "",
-  //   solution: "",
-  // },
-  {
-    id: 6,
-    title: "Walter Julio Nicholls",
-    description: "UCI Department of Urban Planning and Public Policy",
-    category: "web development",
-    image: "/assets/portfolio/walter.png",
-    link: "https://walternicholls.com",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  // {
-  //   id: 7,
-  //   title: "Lory Rosenberg",
-  //   description: "",
-  //   category: "web development",
-  //   image: "/assets/portfolio/loryd.png",
-  //   link: "https://walternicholls.com",
-  //   client: "",
-  //   challenge: "",
-  //   solution: "",
-  // },
-];
+};
 
-const researchPapers: ResearchPaper[] = [
-  {
-    id: 1,
-    title:
-      "Interval ADP: A Method for Estimating Recent Populations at ICE Detention Facilities",
-    description: `Executive Summary: Immigration and Customs Enforcement (ICE) regularly releases data on the total number of immigrants currently in detention nationwide and the average daily population (ADP) of individual detention facilities over the fiscal year to date (FYTD). ICE does not provide up to-date data on the total currently detained population at individual detention facilities — an important yet missing data point. In this paper, Relevant Research outlines a method for estimating recent daily average populations at individual detention facilities. We refer to ICE’s facility-level ADP estimates as “Reported ADP” and we refer our facility-level ADP estimates as “Interval ADP”, since our estimates provide the ADP for the time period between ICE’s previous detention spreadsheet and the current detention spreadsheet. As we show in this paper, sudden spikes or dips in ICE’s detained population at specific facilities may result in significant differences between Reported ADP and Interval ADP. Thus, calculating interval ADP provides facility-level estimates that are closer to current reality than ICE’s Reported ADP.`,
-    category: "research",
-    // github:
-    //   "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    downloadLink: "/assets/pdf/methodology_writeup.pdf",
-  },
-];
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function WorkPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -146,254 +56,377 @@ export default function WorkPage() {
     null,
   );
 
-  const isMobile = useIsMobile();
+  const projects = projectsData as Project[];
+  const researchPapers = researchData as ResearchPaper[];
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-15 pb-16">
-      <>
-        {isMobile ? (
-          // Mobile layout
-          <div className="mt-24 w-full  pb-10">
-            <div className="space-y-4 text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-3xl font-bold tracking-tight sm:text-4xl"
-              >
-                Research <span className="gradient-text">Papers</span>
-              </motion.h2>
-              <p className="max-w-[700px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
-                Read our published research papers and methodological
-                frameworks.
-              </p>
-            </div>
-
-            <div className="mt-16 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 px-4">
-              {researchPapers.map((paper) => (
-                <motion.div
-                  key={paper.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ y: -5 }}
-                  onClick={() => setSelectedPaper(paper)}
-                  className="group cursor-pointer overflow-hidden rounded-xl border bg-card shadow-sm hover:shadow-lg transition-all"
-                >
-                  <div className="p-6">
-                    <div className="mb-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-800 dark:bg-sky-900/30 dark:text-sky-300">
-                      {paper.category}
-                    </div>
-                    <h3 className="mb-2 text-xl font-bold">{paper.title}</h3>
-                    <p className="text-muted-foreground line-clamp-4">
-                      {paper.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <Dialog
-              open={!!selectedPaper}
-              onOpenChange={() => setSelectedPaper(null)}
-            >
-              <DialogContent className="max-w-2xl h-screen overflow-y-auto ">
-                <DialogHeader>
-                  <DialogTitle>{selectedPaper?.title}</DialogTitle>
-                </DialogHeader>
-                <div className="space-y-4">
-                  <p className="text-muted-foreground">
-                    {selectedPaper?.description}
-                  </p>
-                  {selectedPaper?.downloadLink && (
-                    <Button asChild className="w-full">
-                      <a
-                        href={selectedPaper.downloadLink}
-                        download
-                        rel="noopener noreferrer"
-                      >
-                        Download PDF <ExternalLink className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
-                  )}
-                  {selectedPaper?.github && (
-                    <Button asChild variant="outline" className="w-full">
-                      <a
-                        href={selectedPaper.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View on GitHub <ExternalLink className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </DialogContent>
-            </Dialog>
-          </div>
-        ) : (
-          // Desktop layout
-          <div className="mt-24 w-[70%] pb-10 mx-auto">
-            <div className="space-y-4 text-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-3xl font-bold tracking-tight sm:text-4xl"
-              >
-                Research <span className="gradient-text">Papers</span>
-              </motion.h2>
-              <p className="max-w-[700px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
-                Read our published research papers and methodological
-                frameworks.
-              </p>
-            </div>
-
-            <div className="mt-16 grid gap-8 px-4">
-              {researchPapers.map((paper) => (
-                <motion.div
-                  key={paper.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ y: -5 }}
-                  className="group cursor-default overflow-hidden rounded-xl border bg-card shadow-sm hover:shadow-lg transition-all"
-                >
-                  <div className="p-6 space-y-4">
-                    <div className="inline-block rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-800 dark:bg-sky-900/30 dark:text-sky-300">
-                      {paper.category}
-                    </div>
-                    <h3 className="text-xl font-bold">{paper.title}</h3>
-                    <p className="text-muted-foreground">{paper.description}</p>
-
-                    {paper.downloadLink && (
-                      <Button asChild className="w-full">
-                        <a
-                          href={paper.downloadLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Download PDF <ExternalLink className="ml-2 h-4 w-4" />
-                        </a>
-                      </Button>
-                    )}
-
-                    {paper.github && (
-                      <Button asChild variant="outline" className="w-full">
-                        <a
-                          href={paper.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View on GitHub{" "}
-                          <ExternalLink className="ml-2 h-4 w-4" />
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
-      </>
-      {/* Our Work segment */}
-      <div className=" flex flex-col items-center justify-center container px-10 md:px-6">
-        <div className=" space-y-4 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+    <div className="min-h-screen bg-gradient-to-b from-background to-orange-50/20 dark:to-orange-950/10">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+            transition={{ duration: 0.6 }}
+            className="text-center space-y-6 max-w-4xl mx-auto"
           >
-            Our <span className="gradient-text">Web Projects</span>
-          </motion.h1>
-          <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            Explore our portfolio of successful projects where we've helped
-            researchers amplify their impact.
-          </p>
+            <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
+              Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
+                Portfolio
+              </span>
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Discover our research projects and technical solutions that
+              amplify academic impact and drive meaningful change.
+            </p>
+          </motion.div>
         </div>
+      </section>
 
-        <div className="mt-16 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl px-4">
-          {projects.map((project) => (
+      {/* Main Content */}
+      <section className="pb-24">
+        <div className="container mx-auto px-4 space-y-24">
+          {/* Research Papers Section */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8"
+          >
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedProject(project)}
-              className="group cursor-pointer overflow-hidden rounded-xl border bg-card shadow-sm transition-all hover:shadow-lg"
+              variants={itemVariants}
+              className="text-center space-y-4"
             >
-              {project.image && (
-                <div className="aspect-video w-full overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={800}
-                    height={600}
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-              )}
-              <div className="p-6">
-                <div className="mb-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
-                  {project.category}
-                </div>
-                <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
-                <p className="text-muted-foreground">{project.description}</p>
-              </div>
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
+                Research Publications
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Peer-reviewed research papers and methodological frameworks
+                advancing immigration and policy research.
+              </p>
             </motion.div>
-          ))}
-        </div>
 
-        <Dialog
-          open={!!selectedProject}
-          onOpenChange={() => setSelectedProject(null)}
-        >
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>{selectedProject?.title}</DialogTitle>
-            </DialogHeader>
-            {selectedProject?.image && (
-              <div className="aspect-video w-full overflow-hidden rounded-lg">
+            <div className="max-w-4xl mx-auto space-y-6">
+              {researchPapers.map((paper, index) => (
+                <motion.div
+                  key={paper.id}
+                  variants={itemVariants}
+                  whileHover={{ x: 8 }}
+                  onClick={() => setSelectedPaper(paper)}
+                  className="group cursor-pointer"
+                >
+                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
+                    <CardContent className="p-8 space-y-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                            <BookOpen className="h-6 w-6 text-orange-600" />
+                          </div>
+                        </div>
+
+                        <div className="flex-1 space-y-4">
+                          <div className="space-y-2">
+                            <Badge variant="secondary" className="mb-2">
+                              {paper.category}
+                            </Badge>
+                            <h3 className="text-xl font-bold group-hover:text-orange-600 transition-colors leading-tight">
+                              {paper.title}
+                            </h3>
+                            <p className="text-muted-foreground">
+                              {paper.shortDescription}
+                            </p>
+                          </div>
+
+                          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-1">
+                              <Users className="h-3 w-3" />
+                              {paper.authors.join(", ")}
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              {paper.year}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            {paper.keywords.slice(0, 3).map((keyword) => (
+                              <Badge
+                                key={keyword}
+                                variant="outline"
+                                className="text-xs"
+                              >
+                                {keyword}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex-shrink-0">
+                          <div className="flex items-center gap-2 text-orange-600 font-medium">
+                            Read More
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Web Projects Section */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8"
+          >
+            <motion.div
+              variants={itemVariants}
+              className="text-center space-y-4"
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
+                Web Development Projects
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Cutting-edge web applications and platforms that transform
+                research data into accessible insights.
+              </p>
+            </motion.div>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
+              {projects.map((project, index) => {
+                const IconComponent =
+                  categoryIcons[
+                    project.category as keyof typeof categoryIcons
+                  ] || Globe;
+                return (
+                  <motion.div
+                    key={project.id}
+                    variants={itemVariants}
+                    whileHover={{ y: -8 }}
+                    onClick={() => setSelectedProject(project)}
+                    className="group cursor-pointer"
+                  >
+                    <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
+                      <div className="aspect-video overflow-hidden relative">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        <Badge className="absolute top-4 left-4 bg-orange-600 hover:bg-orange-700">
+                          <IconComponent className="h-3 w-3 mr-1" />
+                          {project.category}
+                        </Badge>
+                      </div>
+                      <CardContent className="p-6 space-y-4">
+                        <div className="space-y-2">
+                          <h3 className="text-xl font-bold group-hover:text-orange-600 transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-muted-foreground line-clamp-2">
+                            {project.shortDescription}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Calendar className="h-3 w-3" />
+                            {project.year}
+                          </div>
+                          <div className="flex items-center gap-2 text-orange-600 font-medium">
+                            View Details
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Project Modal */}
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={() => setSelectedProject(null)}
+      >
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">
+              {selectedProject?.title}
+            </DialogTitle>
+          </DialogHeader>
+
+          {selectedProject && (
+            <div className="space-y-6">
+              <div className="aspect-video overflow-hidden rounded-lg">
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   width={800}
-                  height={600}
-                  className="object-cover"
+                  height={450}
+                  className="object-cover w-full h-full"
                 />
               </div>
-            )}
-            <div className="space-y-4">
-              {/* <div>
-                <h4 className="font-semibold">Client</h4>
-                <p className="text-muted-foreground">
-                  {selectedProject?.client}
-                </p>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">
+                      Project Overview
+                    </h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Challenge</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.challenge}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold mb-2">Solution</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.solution}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Technologies</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech) => (
+                        <Badge key={tech} variant="secondary">
+                          <Code className="h-3 w-3 mr-1" />
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 space-y-3">
+                    <div className="text-sm text-muted-foreground">
+                      <strong>Client:</strong> {selectedProject.client}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      <strong>Year:</strong> {selectedProject.year}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold">Challenge</h4>
-                <p className="text-muted-foreground">
-                  {selectedProject?.challenge}
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Solution</h4>
-                <p className="text-muted-foreground">
-                  {selectedProject?.solution}
-                </p>
-              </div> */}
-              {selectedProject?.link && (
-                <Button asChild className="w-full">
+
+              <div className="flex gap-4">
+                <Button asChild className="flex-1">
                   <a
                     href={selectedProject.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View Website <ExternalLink className="ml-2 h-4 w-4" />
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Visit Website
                   </a>
                 </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Research Paper Modal */}
+      <Dialog
+        open={!!selectedPaper}
+        onOpenChange={() => setSelectedPaper(null)}
+      >
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl leading-tight">
+              {selectedPaper?.title}
+            </DialogTitle>
+          </DialogHeader>
+
+          {selectedPaper && (
+            <div className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-3">
+                <div className="md:col-span-2 space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Abstract</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedPaper.abstract}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Keywords</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedPaper.keywords.map((keyword) => (
+                        <Badge key={keyword} variant="outline">
+                          {keyword}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold mb-2">Publication Details</h4>
+                    <div className="space-y-2 text-sm">
+                      <div>
+                        <strong>Authors:</strong>{" "}
+                        {selectedPaper.authors.join(", ")}
+                      </div>
+                      <div>
+                        <strong>Year:</strong> {selectedPaper.year}
+                      </div>
+                      <div>
+                        <strong>Status:</strong> {selectedPaper.status}
+                      </div>
+                      <div>
+                        <strong>Category:</strong> {selectedPaper.category}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Citation</h4>
+                    <p className="text-sm text-muted-foreground italic">
+                      {selectedPaper.citation}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {selectedPaper.downloadLink && (
+                <div className="flex gap-4">
+                  <Button asChild className="flex-1">
+                    <a
+                      href={selectedPaper.downloadLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download PDF
+                    </a>
+                  </Button>
+                </div>
               )}
             </div>
-          </DialogContent>
-        </Dialog>
-      </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
