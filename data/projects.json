@@ -1,0 +1,82 @@
+[
+    {
+        "id": "wrc-detention-tracker",
+        "title": "Detention Pregnancy Tracker",
+        "description": "A confidential tool developed by the Women's Refugee Commission to collect real-time reports on the treatment and conditions of pregnant, postpartum, and nursing women in U.S. immigration detention.",
+        "shortDescription": "Real-time tracking system for women's conditions in ICE detention facilities.",
+        "category": "Web Development",
+        "image": "/assets/images/works/wrc.webp",
+        "link": "https://johnmtorrens.com/",
+        "client": "Women's Refugee Commission",
+        "challenge": "Creating a secure, confidential platform to collect sensitive data about detention conditions while ensuring user privacy and data integrity.",
+        "solution": "Developed a robust web application with encrypted data collection, real-time reporting capabilities, and secure access controls for healthcare providers and advocates.",
+        "technologies": [
+            "React",
+            "Node.js",
+            "PostgreSQL",
+            "AWS"
+        ],
+        "year": "2023",
+        "status": "live"
+    },
+    {
+        "id": "ice-detention-dashboard",
+        "title": "ICE Detention Dashboard",
+        "description": "A comprehensive data visualization platform providing insights into U.S. immigration detention patterns, facility capacities, and demographic trends.",
+        "shortDescription": "Interactive dashboard for immigration detention data analysis.",
+        "category": "Data Visualization",
+        "image": "/assets/images/works/ice-detentation.webp",
+        "link": "https://penelopeanthias.com/",
+        "client": "Durham University Research Initiative",
+        "challenge": "Transforming complex detention data into accessible, interactive visualizations for researchers and policymakers.",
+        "solution": "Built an intuitive dashboard with dynamic charts, filtering capabilities, and export functions for detailed analysis.",
+        "technologies": [
+            "D3.js",
+            "React",
+            "Python",
+            "Docker"
+        ],
+        "year": "2023",
+        "status": "live"
+    },
+    {
+        "id": "immprof-blog",
+        "title": "Immigration Professor Blog Platform",
+        "description": "A modern, responsive blog platform designed for academic researchers to share immigration policy insights and research findings.",
+        "shortDescription": "Academic blog platform for immigration research dissemination.",
+        "category": "Web Development",
+        "image": "/assets/images/works/immprof.webp",
+        "link": "https://michaelpaarlberg.org",
+        "client": "Virginia Commonwealth University",
+        "challenge": "Creating a professional platform that bridges academic research with public discourse on immigration policy.",
+        "solution": "Developed a content management system with SEO optimization, social sharing, and responsive design for academic content distribution.",
+        "technologies": [
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Vercel"
+        ],
+        "year": "2022",
+        "status": "live"
+    },
+    {
+        "id": "immigration-enforcement-dashboard",
+        "title": "Immigration Enforcement Analytics",
+        "description": "Advanced analytics platform tracking immigration enforcement activities, policy impacts, and regional variations across the United States.",
+        "shortDescription": "Analytics platform for immigration enforcement data.",
+        "category": "Data Analytics",
+        "image": "/assets/images/works/immigtaion-enforcement.webp",
+        "link": "https://michaelpaarlberg.org",
+        "client": "Policy Research Institute",
+        "challenge": "Processing and visualizing large datasets of enforcement actions to identify patterns and policy effectiveness.",
+        "solution": "Created a scalable analytics platform with real-time data processing, predictive modeling, and interactive reporting tools.",
+        "technologies": [
+            "Python",
+            "Machine Learning",
+            "PostgreSQL",
+            "Tableau"
+        ],
+        "year": "2022",
+        "status": "live"
+    }
+]
