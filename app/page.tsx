@@ -30,9 +30,9 @@ export default function Home() {
                   Transforming Research Impact
                 </motion.div>
 
-                <h1 className="text-4xl font-bold tracking-tight lg:text-6xl xl:text-7xl leading-tight">
+                <h1 className="text-4xl font-bold tracking-tight lg:text-5xl xl:text-6xl leading-tight">
                   Amplify Your Research&apos;s
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 mt-2">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 mt-2 pb-2">
                     Digital Presence
                   </span>
                 </h1>
@@ -218,7 +218,7 @@ export default function Home() {
                 >
                   {portal.logoUrl ? (
                     // Image-based logo in original colors
-                    <div className="w-40 h-16 rounded flex items-center justify-center bg-white/90 backdrop-blur-sm shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                    <div className="w-40 h-16 rounded flex items-center justify-center bg-white/90 backdrop-blur-sm  transition-all duration-300 hover:scale-110 ">
                       <Image
                         src={portal.logoUrl}
                         alt={`${portal.name} logo`}

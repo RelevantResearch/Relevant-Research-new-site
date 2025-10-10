@@ -4,8 +4,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     {
         id: "1",
         name: "Austin Kocher",
-        role: "Public Impact Strategist",
-        department: "Management",
+        role: "President",
+        department: "Co-Founder",
         imageUrl: "/assets/team/austin.jpg",
         bio: "Austin leads our public impact strategies and outreach initiatives.",
         isActive: true,
@@ -16,8 +16,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     {
         id: "2",
         name: "Adam Sawyer",
-        role: "Data Analyst",
-        department: "Research",
+        role: "Director of Research",
+        department: "Co-Founder",
         imageUrl: "/assets/team/adam1.jpg",
         bio: "Adam specializes in data analysis and research methodologies.",
         isActive: true,
@@ -29,8 +29,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     {
         id: "3",
         name: "Riwaj Chalise",
-        role: "Team Lead",
-        department: "Software Development",
+        role: "Director of Software Development",
+        department: "Co-Founder",
         imageUrl: "/assets/team/riwaj.jpeg",
         bio: "Riwaj leads our development team and oversees technical projects.",
         isActive: true,
