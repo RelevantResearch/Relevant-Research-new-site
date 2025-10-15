@@ -14,26 +14,15 @@ import {
 import {
   ExternalLink,
   Download,
-  Calendar,
   Users,
-  Code,
   BookOpen,
   ArrowRight,
   Globe,
-  Database,
-  Presentation,
 } from "lucide-react";
 import Image from "next/image";
 import { Project, ResearchPaper } from "@/types/work";
 import projectsData from "@/data/projects.json";
 import researchData from "@/data/research-papers.json";
-
-const categoryIcons = {
-  "Web Development": Globe,
-  "Data Visualization": Presentation,
-  "Data Analytics": Database,
-  "Research Methodology": BookOpen,
-};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -149,10 +138,6 @@ export default function WorkPage() {
                               <Users className="h-3 w-3" />
                               {paper.authors.join(", ")}
                             </div>
-                            <div className="flex items-center gap-1">
-                              <Calendar className="h-3 w-3" />
-                              {paper.year}
-                            </div>
                           </div>
 
                           <div className="flex items-center gap-2">
@@ -203,61 +188,47 @@ export default function WorkPage() {
             </motion.div>
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
-              {projects.map((project, index) => {
-                const IconComponent =
-                  categoryIcons[
-                    project.category as keyof typeof categoryIcons
-                  ] || Globe;
-                return (
-                  <motion.div
-                    key={project.id}
-                    variants={itemVariants}
-                    whileHover={{ y: -8 }}
-                    onClick={() => setSelectedProject(project)}
-                    className="group cursor-pointer relative"
-                  >
-                    <Card className="overflow-hidden border bg-card shadow-sm hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 group-hover:border-orange-200 dark:group-hover:border-orange-800">
-                      {/* Background gradient effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-orange-600/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
+                  onClick={() => setSelectedProject(project)}
+                  className="group cursor-pointer relative"
+                >
+                  <Card className="overflow-hidden border bg-card shadow-sm hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 group-hover:border-orange-200 dark:group-hover:border-orange-800">
+                    {/* Background gradient effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-orange-600/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                      <div className="aspect-video overflow-hidden relative">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                        <Badge className="absolute top-4 left-4 bg-orange-600 hover:bg-orange-700 text-white border-0">
-                          <IconComponent className="h-3 w-3 mr-1" />
-                          {project.category}
-                        </Badge>
+                    <div className="aspect-video overflow-hidden relative">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+                    <CardContent className="p-6 space-y-4 relative z-10">
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors text-foreground">
+                          {project.title}
+                        </h3>
+                        <p className="text-muted-foreground line-clamp-2 leading-relaxed">
+                          {project.shortDescription}
+                        </p>
                       </div>
-                      <CardContent className="p-6 space-y-4 relative z-10">
-                        <div className="space-y-2">
-                          <h3 className="text-xl font-bold group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors text-foreground">
-                            {project.title}
-                          </h3>
-                          <p className="text-muted-foreground line-clamp-2 leading-relaxed">
-                            {project.shortDescription}
-                          </p>
-                        </div>
 
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <Calendar className="h-3 w-3" />
-                            {project.year}
-                          </div>
-                          <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium">
-                            View Details
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </div>
+                      <div className="flex items-center justify-end">
+                        <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium">
+                          View Details
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -287,53 +258,14 @@ export default function WorkPage() {
                 />
               </div>
 
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">
-                      Project Overview
-                    </h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedProject.description}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-2">Challenge</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedProject.challenge}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Solution</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedProject.solution}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-2">Technologies</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProject.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary">
-                          <Code className="h-3 w-3 mr-1" />
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 space-y-3">
-                    <div className="text-sm text-muted-foreground">
-                      <strong>Client:</strong> {selectedProject.client}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      <strong>Year:</strong> {selectedProject.year}
-                    </div>
-                  </div>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">
+                    Project Overview
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {selectedProject.description}
+                  </p>
                 </div>
               </div>
 
