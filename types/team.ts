@@ -7,7 +7,7 @@ export interface SocialLinks {
 
 export type SocialPlatform = keyof SocialLinks;
 
-export type Department = 'Software Development' | 'Design' | 'Research' | 'Management' | 'Marketing';
+export type Department = 'Software Development' | 'Design' | 'Research' | 'Management' | 'Marketing' | 'Co-Founder' | 'Director of Research' | 'Director of Software Development';
 
 export interface TeamMember {
     id: string;
