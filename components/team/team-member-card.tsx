@@ -64,9 +64,9 @@ export const TeamMemberCard = forwardRef<HTMLDivElement, TeamMemberCardProps>(
           <Image
             src={member.imageUrl}
             alt={`Profile picture of ${member.name}`}
-            width={128}
-            height={128}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            style={{ objectPosition: '50% 30%' }}
             sizes="128px"
             priority={index < 6} // Prioritize loading for first 6 members
           />
