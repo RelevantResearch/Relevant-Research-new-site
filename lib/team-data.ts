@@ -104,7 +104,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
         imageUrl: "/assets/team/pranisha.webp",
         bio: "Pranisha coordinates our team activities and project management.",
         isActive: true,
-        socialLinks: {},
+        socialLinks: { linkedin: "https://www.linkedin.com/in/pranisha-acharya/" },
     },
     {
         id: "10",
