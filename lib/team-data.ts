@@ -6,7 +6,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
         name: "Austin Kocher",
         role: "President",
         department: "Co-Founder",
-        imageUrl: "/assets/team/austin.jpg",
+        imageUrl: "/assets/team/austin.webp",
         bio: "Austin leads our public impact strategies and outreach initiatives.",
         isActive: true,
         socialLinks: {
@@ -18,7 +18,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
         name: "Adam Sawyer",
         role: "Director of Research",
         department: "Co-Founder",
-        imageUrl: "/assets/team/adam1.jpg",
+        imageUrl: "/assets/team/adam.webp",
         bio: "Adam specializes in data analysis and research methodologies.",
         isActive: true,
         socialLinks: {
@@ -31,7 +31,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
         name: "Riwaj Chalise",
         role: "Director of Software Development",
         department: "Co-Founder",
-        imageUrl: "/assets/team/riwaj.jpeg",
+        imageUrl: "/assets/team/riwaj.webp",
         bio: "Riwaj leads our development team and oversees technical projects.",
         isActive: true,
         socialLinks: {
@@ -43,7 +43,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
         name: "Michael Ale",
         role: "Data Scientist",
         department: "Research",
-        imageUrl: "/assets/team/michael.png",
+        imageUrl: "/assets/team/michael.webp",
         bio: "Michael focuses on data science and statistical analysis.",
         isActive: true,
         socialLinks: {
@@ -67,7 +67,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
         name: "Bishal Timsina",
         role: "Web Developer",
         department: "Software Development",
-        imageUrl: "/assets/team/bishal.jpeg",
+        imageUrl: "/assets/team/bishal.webp",
         bio: "Bishal develops and maintains our web applications.",
         isActive: true,
         socialLinks: {
@@ -79,7 +79,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
         name: "Sandesh Nilas Khatiwada",
         role: "Web Developer",
         department: "Software Development",
-        imageUrl: "/assets/team/sandesh.jpeg",
+        imageUrl: "/assets/team/sandesh.webp",
         bio: "Sandesh is a full-stack developer with expertise in modern web technologies.",
         isActive: true,
         socialLinks: {
@@ -101,9 +101,19 @@ export const TEAM_MEMBERS: TeamMember[] = [
         name: "Pranisha Acharya",
         role: "People and Projects Coordinator",
         department: "Management",
-        imageUrl: "/assets/team/pranisha.jpeg",
+        imageUrl: "/assets/team/pranisha.webp",
         bio: "Pranisha coordinates our team activities and project management.",
         isActive: true,
-        socialLinks: {},
+        socialLinks: { linkedin: "https://www.linkedin.com/in/pranisha-acharya/" },
+    },
+    {
+        id: "10",
+        name: "Manashwee Kafley",
+        role: "Knowledge Management Specialist",
+        department: "Research",
+        imageUrl: "/assets/team/manashwee.webp",
+        bio: "Manashwee specializes in knowledge management and organizational learning.",
+        isActive: true,
+        socialLinks: { linkedin: "https://www.linkedin.com/in/mkafley/" },
     },
 ];
