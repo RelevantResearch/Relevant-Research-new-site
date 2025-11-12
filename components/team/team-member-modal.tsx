@@ -74,9 +74,9 @@ export function TeamMemberModal({
               <Image
                 src={member.imageUrl}
                 alt={`Profile picture of ${member.name}`}
-                width={160}
-                height={160}
-                className="h-full w-full object-cover"
+                fill
+                className="object-cover"
+                style={{ objectPosition: "50% 30%" }}
                 sizes="160px"
                 priority
               />
