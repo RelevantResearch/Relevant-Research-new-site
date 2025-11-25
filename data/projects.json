@@ -30,5 +30,13 @@
         "shortDescription": "Analytics platform for immigration enforcement data.",
         "image": "/assets/images/works/immigtaion-enforcement.webp",
         "link": "https://enforcementdashboard.com/ice-arrests/"
+    },
+    {
+        "id": "american-families-united",
+        "title": "American Families United (AFU)",
+        "description": "American Families United (AFU) is a grassroots nonprofit advocating for immigration reform that keeps U.S. citizens and their immigrant spouses together. Through education, storytelling, and policy work — especially waivers and congressional advocacy — we aim to build a fairer system that prioritizes family unity and dignity.",
+        "shortDescription": "Advocacy organization promoting immigration reform for family unity.",
+        "image": "/assets/images/works/american-families-united.webp",
+        "link": "https://www.americanfamiliesunited.org/"
     }
 ]
