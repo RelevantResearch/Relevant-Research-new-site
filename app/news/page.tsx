@@ -61,12 +61,12 @@ function NewsRow({ news, index }: NewsRowProps) {
             <Badge variant="secondary" className="text-xs font-medium">
               {news.domain}
             </Badge>
-            {/* {news.publishDate && (
+            {news.publishDate && (
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <Calendar className="w-4 h-4" />
                 <span>{formatDate(news.publishDate)}</span>
               </div>
-            )} */}
+            )}
           </div>
 
           {/* Title */}
