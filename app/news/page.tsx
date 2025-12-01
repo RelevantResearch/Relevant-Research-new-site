@@ -13,7 +13,7 @@ interface NewsItem {
   id: number;
   url: string;
   title: string;
-  description: string;
+  author: string;
   image: string | null;
   domain: string;
   publishDate: string;
@@ -95,7 +95,7 @@ function NewsRow({ news, index }: NewsRowProps) {
                 overflow: "hidden",
               }}
             >
-              {news.description}
+              Author: {news.author}
             </span>
           </p>
 
