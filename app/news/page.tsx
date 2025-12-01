@@ -13,7 +13,7 @@ interface NewsItem {
   id: number;
   url: string;
   title: string;
-  description: string;
+  author: string;
   image: string | null;
   domain: string;
   publishDate: string;
@@ -70,7 +70,7 @@ function NewsRow({ news, index }: NewsRowProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-lg font-semibold leading-tight group-hover:text-orange-600 transition-colors overflow-hidden">
+          <h3 className="text-lg font-semibold leading-tight transition-colors overflow-hidden">
             <span
               className="block leading-tight"
               style={{
@@ -95,7 +95,7 @@ function NewsRow({ news, index }: NewsRowProps) {
                 overflow: "hidden",
               }}
             >
-              {news.description}
+              Author: {news.author}
             </span>
           </p>
 
