@@ -1,48 +1,43 @@
 [
   {
     "id": 1,
-    "url": "https://www.huffpost.com/entry/alligator-alcatraz-immigration-jail_n_68d6a319e4b0185d00688297",
-    "title": "Alligator Alcatraz Is A New Kind Of Immigration Jail – And It’s Multiplying | HuffPost Latest News",
-    "description": "A wave of new immigration jails is drawing widespread criticism for terrible conditions and restricted access to legal resources.",
-    "image": "https://img.huffingtonpost.com/asset/68d431e5180000e9ab5d00f9.jpg?cache=5TP5LH9y0d&amp;ops=500_281%2Cscalefit_1200_630",
-    "domain": "huffpost.com",
-    "publishDate": "2025-09-27"
+    "url": "https://www.theguardian.com/us-news/2025/nov/21/deportations-us-government-shutdown-ice-data",
+    "title": "Tens of thousands of people were detained and deported during US government shutdown.",
+    "author": "Will Craft, Andrew Witherspoon and José Olivares",
+    "domain": "The Guardian",
+    "publishDate": "2025-11-21"
   },
   {
     "id": 2,
-    "url": "https://www.theguardian.com/us-news/2025/sep/26/ice-detention-death-toll-trump",
-    "title": "Ice detainees death toll reaches 16 amid concerns over ‘horrendous’ conditions | US immigration | The Guardian",
-    "description": "Rising toll worries activists as mass detention in US increases after Trump returned to White House in January",
-    "image": "https://i.guim.co.uk/img/media/849f08e65dfe2f6afc5bdfea043c67db9525cf4b/0_0_5718_4576/master/5718.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=25446f6b728703d68a520a3fff88c696",
-    "domain": "theguardian.com",
-    "publishDate": "2025-09-26"
+    "url": "https://www.themarshallproject.org/2025/11/15/data-ice-chicago-shutdown-immigration",
+    "title": "ICE Data on Raids Hidden During Shutdown.",
+    "author": "Geoff Hing and Jill Castellano",
+    "domain": "The Marshall Project",
+    "publishDate": "2025-11-15"
   },
   {
     "id": 3,
     "url": "https://www.cbs42.com/border-report-tour/new-online-data-dashboard-tracks-ice-arrests/",
-    "title": "New Online Data Dashboard Tracks Ice Arrests",
-    "description": "Article from cbs42.com - Content temporarily unavailable",
-    "image": null,
-    "domain": "cbs42.com",
+    "title": "New Online Data Dashboard Tracks Ice Arrests.",
+    "author": "Sandra Sanchez",
+    "domain": "CBS42",
     "publishDate": "2025-09-20",
     "error": true
   },
   {
     "id": 4,
-    "url": "https://www.themarshallproject.org/2025/11/15/data-ice-chicago-shutdown-immigration",
-    "title": "ICE Data on Raids Hidden During Shutdown | The Marshall Project",
-    "description": "More than seven weeks have passed since the last comprehensive release of detention and deportation numbers.",
-    "image": "https://mirrorball.themarshallproject.org/0-Ys8Z2rerKLtnxUIQDWZym0Vz58n3jXgxQSpe_LWzE/w:1200/aHR0cHM6Ly9kMm0x/OXBtdnRzNWJvYi5j/bG91ZGZyb250Lm5l/dC9za3FnamwzN2Nn/ejVuMTM0dmM0NHpj/cHhyZDg4LzI1MTEx/NF9adW1hX0NBRVNT/QVkxMTE1X3NvY2lh/bC5qcGc",
-    "domain": "themarshallproject.org",
-    "publishDate": "2025-11-15"
+    "url": "https://www.theguardian.com/us-news/2025/sep/26/ice-detention-death-toll-trump",
+    "title": "Ice detainees death toll reaches 16 amid concerns over ‘horrendous’ conditions.",
+    "author": "Maya Yang",
+    "domain": "The Guardian",
+    "publishDate": "2025-09-26"
   },
   {
     "id": 5,
-    "url": "https://www.theguardian.com/us-news/2025/nov/21/deportations-us-government-shutdown-ice-data",
-    "title": "Tens of thousands of people were detained and deported during US government shutdown | US federal government shutdown 2025 | The Guardian",
-    "description": "As most government business halted during the shutdown, immigration agents continued their raids",
-    "image": "https://i.guim.co.uk/img/media/d792f631f29ea68c2fd49ba72f5a37de23869641/500_0_5000_4000/master/5000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=ddd5300cc73373bbb8a63da0edc748ab",
-    "domain": "theguardian.com",
-    "publishDate": "2025-11-21"
+    "url": "https://www.huffpost.com/entry/alligator-alcatraz-immigration-jail_n_68d6a319e4b0185d00688297",
+    "title": "Alligator Alcatraz Is A New Kind Of Immigration Jail – And It’s Multiplying.",
+    "author": "Matt Shuham",
+    "domain": "Huff Post",
+    "publishDate": "2025-09-27"
   }
 ]
