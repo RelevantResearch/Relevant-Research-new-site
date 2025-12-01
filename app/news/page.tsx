@@ -70,7 +70,7 @@ function NewsRow({ news, index }: NewsRowProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-lg font-semibold leading-tight group-hover:text-orange-600 transition-colors overflow-hidden">
+          <h3 className="text-lg font-semibold leading-tight transition-colors overflow-hidden">
             <span
               className="block leading-tight"
               style={{
