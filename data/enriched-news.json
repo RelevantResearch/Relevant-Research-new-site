@@ -39,5 +39,21 @@
     "author": "Matt Shuham",
     "domain": "Huff Post",
     "publishDate": "2025-09-27"
+  },
+  {
+    "id": 6,
+    "url": "https://kypolicy.org/ice-enforcement-in-kentucky/",
+    "title": "Amid Mounting Harms, Kentucky Is Ramping Up Anti-Immigrant Enforcement",
+    "author": "Ashley Spalding, Patience Martin, Ember Jones and Dustin Pugel",
+    "domain": "kypolicy",
+    "publishDate": "2026-01-16"
+  },
+  {
+    "id": 7,
+    "url": "https://veritenews.org/2026/02/02/detainer-requests-new-orleans-ice/",
+    "title": "New Orleans ICE office a national leader in immigration detainer requests",
+    "author": "Bobbi-Jeanne Misick",
+    "domain": "veritenews",
+    "publishDate": "2026-02-02"
   }
 ]
