@@ -153,21 +153,21 @@ export default function NewsPage() {
         for (let i = 1; i <= 4; i++) {
           pages.push(i);
         }
-        pages.push('ellipsis');
+        pages.push("ellipsis");
         pages.push(totalPages);
       } else if (currentPage >= totalPages - 2) {
         pages.push(1);
-        pages.push('ellipsis');
+        pages.push("ellipsis");
         for (let i = totalPages - 3; i <= totalPages; i++) {
           pages.push(i);
         }
       } else {
         pages.push(1);
-        pages.push('ellipsis');
+        pages.push("ellipsis");
         for (let i = currentPage - 1; i <= currentPage + 1; i++) {
           pages.push(i);
         }
-        pages.push('ellipsis');
+        pages.push("ellipsis");
         pages.push(totalPages);
       }
     }
@@ -233,7 +233,9 @@ export default function NewsPage() {
                     <PaginationContent>
                       <PaginationItem>
                         <PaginationPrevious
-                          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                          onClick={() =>
+                            setCurrentPage((prev) => Math.max(prev - 1, 1))
+                          }
                           className={
                             currentPage === 1
                               ? "pointer-events-none opacity-50"
@@ -243,7 +245,7 @@ export default function NewsPage() {
                       </PaginationItem>
 
                       {getPageNumbers().map((page, index) =>
-                        page === 'ellipsis' ? (
+                        page === "ellipsis" ? (
                           <PaginationItem key={`ellipsis-${index}`}>
                             <PaginationEllipsis />
                           </PaginationItem>
@@ -257,12 +259,16 @@ export default function NewsPage() {
                               {page}
                             </PaginationLink>
                           </PaginationItem>
-                        )
+                        ),
                       )}
 
                       <PaginationItem>
                         <PaginationNext
-                          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                          onClick={() =>
+                            setCurrentPage((prev) =>
+                              Math.min(prev + 1, totalPages),
+                            )
+                          }
                           className={
                             currentPage === totalPages
                               ? "pointer-events-none opacity-50"
