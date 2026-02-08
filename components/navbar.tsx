@@ -13,6 +13,7 @@ const navItems = [
   { name: "Services", href: "/services" },
   { name: "Our Work", href: "/work" },
   { name: "Team", href: "/team" },
+  { name: "News", href: "/news" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -22,13 +23,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/logo.svg"
-            alt="Relevant Research"
-            width={40}
-            height={40}
-          />
+        <Link href="/" className="flex items-center">
           <span className="text-xl font-bold gradient-text">
             Relevant Research
           </span>

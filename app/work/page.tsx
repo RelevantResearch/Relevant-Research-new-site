@@ -1,132 +1,43 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, X } from "lucide-react";
+import {
+  ExternalLink,
+  Download,
+  Users,
+  BookOpen,
+  ArrowRight,
+  Globe,
+} from "lucide-react";
 import Image from "next/image";
+import { Project, ResearchPaper } from "@/types/work";
+import projectsData from "@/data/projects.json";
+import researchData from "@/data/research-papers.json";
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  image?: string;
-  link?: string;
-  client: string;
-  challenge: string;
-  solution: string;
-}
-interface ResearchPaper {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  image?: string;
-  github?: string;
-  downloadLink?: string;
-}
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Dr. John Torrens",
-    description: "Entrepreneur, Educator, TEDx Speaker, Author",
-    category: "web development",
-    image: "/assets/portfolio/john.png",
-    link: "https://johnmtorrens.com/",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 2,
-    title: "Dr. Penelope Anthias",
-    description: "Assoc. Prof. of Geography, Durham University",
-    category: "web development",
-    image: "/assets/portfolio/dr.png",
-    link: "https://penelopeanthias.com/",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 3,
-    title: "Micheal Paarlberg",
-    description:
-      "Assoc. Prof. of Political Science, Virginia Commonwealth University",
-    category: "web development",
-    image: "/assets/portfolio/michael.png",
-    link: "https://michaelpaarlberg.org",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 4,
-    title: "Julio Fernando Salas",
-    description:
-      "PhD Student & Chancellor's Fellow, Dept. of Sociology, UC Berkeley",
-    category: "web development",
-    image: "/assets/portfolio/michael.png",
-    link: "https://juliofernandosalas.com",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 5,
-    title: "Lisa Guerra",
-    description: "Lisa War",
-    category: "web development",
-    image: "/assets/portfolio/lisawar.png",
-    link: "https://lisawarlaw.com/",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 6,
-    title: "Walter Julio Nicholls",
-    description: "UCI Department of Urban Planning and Public Policy",
-    category: "web development",
-    image: "/assets/portfolio/walter.png",
-    link: "https://walternicholls.com",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-  {
-    id: 7,
-    title: "Lory Rosenberg",
-    description: "",
-    category: "web development",
-    image: "/assets/portfolio/loryd.png",
-    link: "https://walternicholls.com",
-    client: "",
-    challenge: "",
-    solution: "",
-  },
-];
-
-const researchPapers: ResearchPaper[] = [
-  {
-    id: 1,
-    title: "IMMIGRANT DETENTION METHODOLOGY PAPER",
-    description: `Executive Summary: In this paper, Relevant Research provides a methodology for estimating recent daily averages of ICE's detained population by facility based on the Congressionally mandated detention data released by the agency on a biweekly basis. On the surface, ICE's detention data spreadsheet provides a recent national total for its detained population and facility-level population averages calculated as an average daily population for the fiscal year to date (starting on October 1)—but no specific recent numbers for each detention facility. The methodology described below does not answer the question of precisely how many people are in an ICE facility at a recent point in time, but it does provide an estimated average daily population for the most recent interval between ICE data releases. Depending on each facility and how significantly ICE detention numbers fluctuate, ICE's reported average daily population ("reported ADP") and our estimated recent average daily population ("interval ADP") diverge to varying degrees.`,
-    category: "research",
-    github:
-      "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    downloadLink:
-      "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?auto=compress&cs=tinysrgb&w=1200",
-  },
-];
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function WorkPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -134,187 +45,329 @@ export default function WorkPage() {
     null,
   );
 
+  const projects = projectsData as Project[];
+  const researchPapers = researchData as ResearchPaper[];
+
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-15 pb-16">
-      {/* Research Papers Section */}
-      <div className="mt-24 w-full pb-10">
-        <div className="space-y-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+    <div className="min-h-screen bg-gradient-to-b from-background to-orange-50/20 dark:to-orange-950/10">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            transition={{ duration: 0.6 }}
+            className="text-center space-y-6 max-w-4xl mx-auto"
           >
-            Research <span className="gradient-text">Papers</span>
-          </motion.h2>
-          <p className="max-w-[700px] mx-auto text-gray-500 md:text-xl dark:text-gray-400">
-            Read our published research papers and methodological frameworks.
-          </p>
+            <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
+              Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
+                Portfolio
+              </span>
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Discover our research projects and technical solutions that
+              amplify academic impact and drive meaningful change.
+            </p>
+          </motion.div>
         </div>
+      </section>
 
-        <div className="mt-16 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl px-4">
-          {researchPapers.map((paper) => (
+      {/* Main Content */}
+      <section className="pb-24">
+        <div className="container mx-auto px-4 space-y-24">
+          {/* Research Papers Section */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8"
+          >
             <motion.div
-              key={paper.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedPaper(paper)}
-              className="group cursor-pointer overflow-hidden rounded-xl border bg-card shadow-sm hover:shadow-lg transition-all"
+              variants={itemVariants}
+              className="text-center space-y-4"
             >
-              <div className="p-6">
-                <div className="mb-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-800 dark:bg-sky-900/30 dark:text-sky-300">
-                  {paper.category}
-                </div>
-                <h3 className="mb-2 text-xl font-bold">{paper.title}</h3>
-                <p className="text-muted-foreground line-clamp-4">
-                  {paper.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Research Paper Dialog */}
-        <Dialog
-          open={!!selectedPaper}
-          onOpenChange={() => setSelectedPaper(null)}
-        >
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>{selectedPaper?.title}</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <p className="text-muted-foreground">
-                {selectedPaper?.description}
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
+                Research Publications
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Peer-reviewed research papers and methodological frameworks
+                advancing immigration and policy research.
               </p>
-              {selectedPaper?.downloadLink && (
-                <Button asChild className="w-full">
-                  <a
-                    href={selectedPaper.downloadLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download PDF <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              )}
-              {selectedPaper?.github && (
-                <Button asChild variant="outline" className="w-full">
-                  <a
-                    href={selectedPaper.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View on GitHub <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              )}
-            </div>
-          </DialogContent>
-        </Dialog>
-      </div>
-
-      {/* Our Work segment */}
-      <div className=" flex flex-col items-center justify-center container px-10 md:px-6">
-        <div className=" space-y-4 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
-          >
-            Our <span className="gradient-text">Work</span>
-          </motion.h1>
-          <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            Explore our portfolio of successful projects where we've helped
-            researchers amplify their impact.
-          </p>
-        </div>
-
-        <div className="mt-16 mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl px-4">
-          {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedProject(project)}
-              className="group cursor-pointer overflow-hidden rounded-xl border bg-card shadow-sm transition-all hover:shadow-lg"
-            >
-              {project.image && (
-                <div className="aspect-video w-full overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={800}
-                    height={600}
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-              )}
-              <div className="p-6">
-                <div className="mb-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
-                  {project.category}
-                </div>
-                <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
-                <p className="text-muted-foreground">{project.description}</p>
-              </div>
             </motion.div>
-          ))}
-        </div>
 
-        <Dialog
-          open={!!selectedProject}
-          onOpenChange={() => setSelectedProject(null)}
-        >
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>{selectedProject?.title}</DialogTitle>
-            </DialogHeader>
-            {selectedProject?.image && (
-              <div className="aspect-video w-full overflow-hidden rounded-lg">
+            <div className="max-w-4xl mx-auto space-y-6">
+              {researchPapers.map((paper, index) => (
+                <motion.div
+                  key={paper.id}
+                  variants={itemVariants}
+                  whileHover={{ x: 8 }}
+                  onClick={() => setSelectedPaper(paper)}
+                  className="group cursor-pointer relative"
+                >
+                  <Card className="overflow-hidden border bg-card shadow-sm hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 group-hover:border-orange-200 dark:group-hover:border-orange-800">
+                    <CardContent className="p-8 space-y-6">
+                      {/* Background gradient effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-orange-600/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                      <div className="flex items-start gap-4 relative z-10">
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center transition-colors duration-300 group-hover:bg-orange-200 dark:group-hover:bg-orange-800/50">
+                            <BookOpen className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                          </div>
+                        </div>
+
+                        <div className="flex-1 space-y-4">
+                          <div className="space-y-2">
+                            <Badge
+                              variant="secondary"
+                              className="mb-2 bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+                            >
+                              {paper.category}
+                            </Badge>
+                            <h3 className="text-xl font-bold group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors leading-tight text-foreground">
+                              {paper.title}
+                            </h3>
+                            <p className="text-muted-foreground leading-relaxed">
+                              {paper.shortDescription}
+                            </p>
+                          </div>
+
+                          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-1">
+                              <Users className="h-3 w-3" />
+                              {paper.authors.join(", ")}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            {paper.keywords.slice(0, 3).map((keyword) => (
+                              <Badge
+                                key={keyword}
+                                variant="outline"
+                                className="text-xs border-orange-200 text-orange-700 dark:border-orange-700 dark:text-orange-300"
+                              >
+                                {keyword}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex-shrink-0">
+                          <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium">
+                            Read More
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Web Projects Section */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8"
+          >
+            <motion.div
+              variants={itemVariants}
+              className="text-center space-y-4"
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
+                Web Development Projects
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Cutting-edge web applications and platforms that transform
+                research data into accessible insights.
+              </p>
+            </motion.div>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
+                  onClick={() => setSelectedProject(project)}
+                  className="group cursor-pointer relative"
+                >
+                  <Card className="overflow-hidden border bg-card shadow-sm hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 group-hover:border-orange-200 dark:group-hover:border-orange-800">
+                    {/* Background gradient effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-orange-600/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                    <div className="aspect-video overflow-hidden relative">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+                    <CardContent className="p-6 space-y-4 relative z-10">
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors text-foreground">
+                          {project.title}
+                        </h3>
+                        <p className="text-muted-foreground line-clamp-2 leading-relaxed">
+                          {project.shortDescription}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-end">
+                        <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium">
+                          View Details
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Project Modal */}
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={() => setSelectedProject(null)}
+      >
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">
+              {selectedProject?.title}
+            </DialogTitle>
+          </DialogHeader>
+
+          {selectedProject && (
+            <div className="space-y-6">
+              <div className="aspect-video overflow-hidden rounded-lg">
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   width={800}
-                  height={600}
-                  className="object-cover"
+                  height={450}
+                  className="object-cover w-full h-full"
                 />
               </div>
-            )}
-            <div className="space-y-4">
-              {/* <div>
-                <h4 className="font-semibold">Client</h4>
-                <p className="text-muted-foreground">
-                  {selectedProject?.client}
-                </p>
+
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">
+                    Project Overview
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold">Challenge</h4>
-                <p className="text-muted-foreground">
-                  {selectedProject?.challenge}
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold">Solution</h4>
-                <p className="text-muted-foreground">
-                  {selectedProject?.solution}
-                </p>
-              </div> */}
-              {selectedProject?.link && (
-                <Button asChild className="w-full">
+
+              <div className="flex gap-4">
+                <Button asChild className="flex-1">
                   <a
                     href={selectedProject.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View Website <ExternalLink className="ml-2 h-4 w-4" />
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Visit Website
                   </a>
                 </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Research Paper Modal */}
+      <Dialog
+        open={!!selectedPaper}
+        onOpenChange={() => setSelectedPaper(null)}
+      >
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl leading-tight">
+              {selectedPaper?.title}
+            </DialogTitle>
+          </DialogHeader>
+
+          {selectedPaper && (
+            <div className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-3">
+                <div className="md:col-span-2 space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Abstract</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedPaper.abstract}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Keywords</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedPaper.keywords.map((keyword) => (
+                        <Badge key={keyword} variant="outline">
+                          {keyword}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold mb-2">Publication Details</h4>
+                    <div className="space-y-2 text-sm">
+                      <div>
+                        <strong>Authors:</strong>{" "}
+                        {selectedPaper.authors.join(", ")}
+                      </div>
+                      <div>
+                        <strong>Year:</strong> {selectedPaper.year}
+                      </div>
+                      <div>
+                        <strong>Status:</strong> {selectedPaper.status}
+                      </div>
+                      <div>
+                        <strong>Category:</strong> {selectedPaper.category}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-2">Citation</h4>
+                    <p className="text-sm text-muted-foreground italic">
+                      {selectedPaper.citation}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {selectedPaper.downloadLink && (
+                <div className="flex gap-4">
+                  <Button asChild className="flex-1">
+                    <a
+                      href={selectedPaper.downloadLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download PDF
+                    </a>
+                  </Button>
+                </div>
               )}
             </div>
-          </DialogContent>
-        </Dialog>
-      </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

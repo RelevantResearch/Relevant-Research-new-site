@@ -1,184 +1,32 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Twitter, X } from "lucide-react";
-import Image from "next/image";
+import { Suspense } from "react";
+import { ErrorBoundary } from "@/components/error-boundary";
+import { TeamSection } from "@/components/team";
+import { TeamPageSkeleton } from "@/components/loading-states";
 
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  department: string;
-  image: string;
-  bio: string;
-  social: {
-    twitter?: string;
-    linkedin?: string;
-    github?: string;
-  };
-}
-
-const team: TeamMember[] = [
-  {
-    id: 1,
-    name: "Austin Kocher",
-    role: "Public Impact Strategist",
-    department: "Administrative",
-    image: "/assets/team/austin.jpg",
-    bio: "",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-      // github: "https://github.com",
-    },
-  },
-  {
-    id: 2,
-    name: "Adam Sawyer",
-    role: "Data Analyst",
-    department: "Data Science",
-    image: "/assets/team/adam1.jpg",
-    bio: "",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-      // github: "https://github.com",
-    },
-  },
-  {
-    id: 3,
-    name: "Riwaj Chalise",
-    role: "Web Developer",
-    department: "web",
-    image: "/assets/team/riwaj.jpeg",
-    bio: "",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-      // github: "https://github.com",
-    },
-  },
-];
-
+/**
+ * Professional team page component with error boundaries and optimized performance
+ *
+ * Features:
+ * - Comprehensive error handling with graceful fallbacks
+ * - Loading states and skeleton screens for better UX
+ * - Responsive design with accessibility considerations
+ * - SEO optimized with proper metadata
+ * - Clean, modular component architecture
+ */
 export default function TeamPage() {
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
-
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen pt-24 pb-16">
-      <div className="flex flex-col items-center justify-center container px-4 md:px-6">
-        <div className="space-y-4 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
-          >
-            Meet Our <span className="gradient-text">Team</span>
-          </motion.h1>
-          <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            Our expert team brings together diverse skills in web development,
-            data analysis, and public impact strategy.
-          </p>
-        </div>
-
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {team.map((member) => (
-            <motion.div
-              key={member.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedMember(member)}
-              className="group cursor-pointer overflow-hidden rounded-xl border bg-card p-6 text-center shadow-sm transition-all hover:shadow-lg"
-            >
-              <div className="mx-auto mb-4 h-32 w-32 overflow-hidden rounded-full">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={128}
-                  height={128}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <div className="mb-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
-                {member.department}
-              </div>
-              <h3 className="mb-1 text-xl font-bold">{member.name}</h3>
-              <p className="text-muted-foreground">{member.role}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <Dialog
-          open={!!selectedMember}
-          onOpenChange={() => setSelectedMember(null)}
-        >
-          <DialogContent className="max-w-2xl">
-            <div className="flex items-center gap-6">
-              <div className="h-40 w-40 overflow-hidden rounded-full">
-                <Image
-                  src={selectedMember?.image || ""}
-                  alt={selectedMember?.name || ""}
-                  width={160}
-                  height={160}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="mb-1 text-xl font-bold">
-                  {selectedMember?.name}
-                </h3>
-                <p className="mb-2 text-muted-foreground">
-                  {selectedMember?.role}
-                </p>
-                <p className="text-muted-foreground">{selectedMember?.bio}</p>
-                <div className="mt-4 flex gap-2">
-                  {selectedMember?.social.twitter && (
-                    <Button variant="ghost" size="icon" asChild>
-                      <a
-                        href={selectedMember.social.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Twitter className="h-5 w-5" />
-                      </a>
-                    </Button>
-                  )}
-                  {selectedMember?.social.linkedin && (
-                    <Button variant="ghost" size="icon" asChild>
-                      <a
-                        href={selectedMember.social.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                    </Button>
-                  )}
-                  {selectedMember?.social.github && (
-                    <Button variant="ghost" size="icon" asChild>
-                      <a
-                        href={selectedMember.social.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github className="h-5 w-5" />
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </div>
-    </div>
+    <main
+      className="flex flex-col items-center justify-start min-h-screen pt-24 pb-16"
+      role="main"
+      aria-label="Team page"
+    >
+      <ErrorBoundary>
+        <Suspense fallback={<TeamPageSkeleton />}>
+          <TeamSection />
+        </Suspense>
+      </ErrorBoundary>
+    </main>
   );
 }
