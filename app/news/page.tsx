@@ -129,7 +129,14 @@ function NewsRow({ news, index }: NewsRowProps) {
 }
 
 export default function NewsPage() {
-  const [newsArticles] = useState<NewsItem[]>(enrichedNewsData as NewsItem[]);
+  // Sort news articles from latest to oldest
+  const sortedNews = (enrichedNewsData as NewsItem[]).sort((a, b) => {
+    return (
+      new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+    );
+  });
+
+  const [newsArticles] = useState<NewsItem[]>(sortedNews);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
