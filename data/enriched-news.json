@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "url": "https://www.theguardian.com/us-news/2025/nov/21/deportations-us-government-shutdown-ice-data",
+    "title": "Tens of thousands of people were detained and deported during US government shutdown.",
+    "author": "Will Craft, Andrew Witherspoon and José Olivares",
+    "domain": "The Guardian",
+    "publishDate": "2025-11-21"
+  },
+  {
+    "id": 2,
+    "url": "https://www.themarshallproject.org/2025/11/15/data-ice-chicago-shutdown-immigration",
+    "title": "ICE Data on Raids Hidden During Shutdown.",
+    "author": "Geoff Hing and Jill Castellano",
+    "domain": "The Marshall Project",
+    "publishDate": "2025-11-15"
+  },
+  {
+    "id": 3,
+    "url": "https://www.cbs42.com/border-report-tour/new-online-data-dashboard-tracks-ice-arrests/",
+    "title": "New Online Data Dashboard Tracks Ice Arrests.",
+    "author": "Sandra Sanchez",
+    "domain": "CBS42",
+    "publishDate": "2025-09-20",
+    "error": true
+  },
+  {
+    "id": 4,
+    "url": "https://www.theguardian.com/us-news/2025/sep/26/ice-detention-death-toll-trump",
+    "title": "Ice detainees death toll reaches 16 amid concerns over ‘horrendous’ conditions.",
+    "author": "Maya Yang",
+    "domain": "The Guardian",
+    "publishDate": "2025-09-26"
+  },
+  {
+    "id": 5,
+    "url": "https://www.huffpost.com/entry/alligator-alcatraz-immigration-jail_n_68d6a319e4b0185d00688297",
+    "title": "Alligator Alcatraz Is A New Kind Of Immigration Jail – And It’s Multiplying.",
+    "author": "Matt Shuham",
+    "domain": "Huff Post",
+    "publishDate": "2025-09-27"
+  },
+  {
+    "id": 6,
+    "url": "https://kypolicy.org/ice-enforcement-in-kentucky/",
+    "title": "Amid Mounting Harms, Kentucky Is Ramping Up Anti-Immigrant Enforcement",
+    "author": "Ashley Spalding, Patience Martin, Ember Jones and Dustin Pugel",
+    "domain": "kypolicy",
+    "publishDate": "2026-01-16"
+  },
+  {
+    "id": 7,
+    "url": "https://veritenews.org/2026/02/02/detainer-requests-new-orleans-ice/",
+    "title": "New Orleans ICE office a national leader in immigration detainer requests",
+    "author": "Bobbi-Jeanne Misick",
+    "domain": "veritenews",
+    "publishDate": "2026-02-02"
+  },
+  {
+    "id": 8,
+    "url": "https://www.youtube.com/watch?v=9e8KL20CHBM",
+    "title": "JUST IN: Maria Elvira Salazar Holds Press Conference On Immigration Bill Amid ICE Controversy",
+    "author": "Forbes Breaking News",
+    "domain": "Youtube - Forbes Breaking News",
+    "publishDate": "2026-02-05"
+  },
+  {
+    "id": 9,
+    "url": "https://www.americanimmigrationcouncil.org/wp-content/uploads/2026/01/immigration-detention-report.pdf",
+    "title": "Immigration Detention Expansion in Trump’s Second Term",
+    "author": "Forbes Breaking News",
+    "domain": "American Immigration Council",
+    "publishDate": "2026-01-14"
+  }
+]

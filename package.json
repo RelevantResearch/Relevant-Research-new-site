@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-news": "node scripts/generate-news.js",
+    "prebuild": "npm run generate-news"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -39,9 +41,7 @@
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@types/node": "20.6.2",
-    "@types/react": "18.2.22",
-    "@types/react-dom": "18.2.7",
-    "@types/recharts": "^2.0.1",
+    "@types/react-dom": "18",
     "autoprefixer": "10.4.15",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -59,15 +59,20 @@
     "react": "18.2.0",
     "react-day-picker": "^9.6.6",
     "react-dom": "18.2.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.53.0",
     "react-intersection-observer": "^9.8.1",
     "react-resizable-panels": "^2.1.7",
-    "recharts": "^2.15.2",
+    "scheduler": "0.20.2",
     "sonner": "^2.0.3",
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "5.2.2",
+    "typescript": "^5.8.3",
     "vaul": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-google-recaptcha": "^2.1.9"
   }
 }

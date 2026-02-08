@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t bg-background px-[8%]">
       <div className="container px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
@@ -35,19 +35,18 @@ export function Footer() {
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
               <li>Email: contact@relevantresearch.com</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Address: 123 Research Ave, Suite 100</li>
+              <li>Address: Maryland, USA</li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Newsletter</h3>
+            {/* <h3 className="text-lg font-semibold">Newsletter</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Subscribe to our newsletter for updates and insights.
             </p>
             <div className="flex gap-2">
               <Input placeholder="Enter your email" type="email" />
               <Button>Subscribe</Button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mt-8 border-t pt-8 text-center text-sm text-gray-500 dark:text-gray-400">

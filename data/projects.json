@@ -1,0 +1,42 @@
+[
+    {
+        "id": "wrc-detention-tracker",
+        "title": "Detention Pregnancy Tracker",
+        "description": "A confidential tool developed by the Women's Refugee Commission to collect real-time reports on the treatment and conditions of pregnant, postpartum, and nursing women in U.S. immigration detention.",
+        "shortDescription": "Real-time tracking system for women's conditions in ICE detention facilities.",
+        "image": "/assets/images/works/wrc.webp",
+        "link": "https://detentionpregnancytracker.com/"
+    },
+    {
+        "id": "ice-detention-dashboard",
+        "title": "ICE Detention Dashboard",
+        "description": "A comprehensive data visualization platform providing insights into U.S. immigration detention patterns, facility capacities, and demographic trends.",
+        "shortDescription": "Interactive dashboard for immigration detention data analysis.",
+        "image": "/assets/images/works/ice-detentation.webp",
+        "link": "https://detentionreports.com/"
+    },
+    {
+        "id": "immprof-blog",
+        "title": "Immigration Professor Blog Platform",
+        "description": "A modern, responsive blog platform designed for academic researchers to share immigration policy insights and research findings.",
+        "shortDescription": "Academic blog platform for immigration research dissemination.",
+        "image": "/assets/images/works/immprof.webp",
+        "link": "https://immprof.com/"
+    },
+    {
+        "id": "immigration-enforcement-dashboard",
+        "title": "Immigration Enforcement Analytics",
+        "description": "Advanced analytics platform tracking immigration enforcement activities, policy impacts, and regional variations across the United States.",
+        "shortDescription": "Analytics platform for immigration enforcement data.",
+        "image": "/assets/images/works/immigtaion-enforcement.webp",
+        "link": "https://enforcementdashboard.com/ice-arrests/"
+    },
+    {
+        "id": "american-families-united",
+        "title": "American Families United (AFU)",
+        "description": "American Families United (AFU) is a grassroots nonprofit advocating for immigration reform that keeps U.S. citizens and their immigrant spouses together. Through education, storytelling, and policy work — especially waivers and congressional advocacy — we aim to build a fairer system that prioritizes family unity and dignity.",
+        "shortDescription": "Advocacy organization promoting immigration reform for family unity.",
+        "image": "/assets/images/works/american-families-united.webp",
+        "link": "https://www.americanfamiliesunited.org/"
+    }
+]
