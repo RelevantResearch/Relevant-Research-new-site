@@ -116,4 +116,14 @@ export const TEAM_MEMBERS: TeamMember[] = [
         isActive: true,
         socialLinks: { linkedin: "https://www.linkedin.com/in/mkafley/" },
     },
+    {
+        id: "11",
+        name: "Nush Ojha",
+        role: "Data Scientist",
+        department: "Research",
+        imageUrl: "/assets/team/nush.webp",
+        bio: "Nush specialize in data analysis and applied data science for research.",
+        isActive: true,
+        socialLinks: { linkedin: "https://www.linkedin.com/in/nush-ojha" },
+    },
 ];
