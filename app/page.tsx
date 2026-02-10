@@ -1,14 +1,29 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { NewsPortal } from "@/types/news-portals";
 import newsPortalsData from "@/data/news-portals.json";
+import projectsData from "@/data/projects.json";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true }),
+  );
+
   return (
     <div className="flex flex-col min-h-screen">
       <section className="relative overflow-hidden hero-background">
@@ -77,15 +92,82 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/20 dark:to-orange-800/20 p-8 shadow-2xl">
-                <Image
-                  src="/assets/images/home_page.png"
-                  alt="Research and digital impact visualization"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto rounded-xl shadow-xl"
-                  priority
-                />
+              <Carousel
+                opts={{
+                  align: "center",
+                  loop: true,
+                }}
+                plugins={[plugin.current]}
+                className="w-full"
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
+                setApi={(api) => {
+                  if (!api) return;
+
+                  setCurrentSlide(api.selectedScrollSnap());
+
+                  api.on("select", () => {
+                    setCurrentSlide(api.selectedScrollSnap());
+                  });
+                }}
+              >
+                <CarouselContent>
+                  {projectsData.map((project, index) => (
+                    <CarouselItem key={project.id}>
+                      <Link href="/work" className="block group">
+                        <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                          <div className="relative aspect-[16/9]">
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                              priority={index === 0}
+                            />
+
+                            {/* Always visible gradient overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-orange-600/40 to-transparent" />
+                          </div>
+
+                          {/* Content overlay - always visible */}
+                          <div className="absolute inset-0 flex items-center justify-center p-8">
+                            <div className="text-center space-y-4">
+                              <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white uppercase tracking-wider">
+                                Featured Work
+                              </span>
+                              <h3 className="text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
+                                {project.title}
+                              </h3>
+                              <p className="text-sm lg:text-base text-white/90 max-w-md mx-auto">
+                                {project.shortDescription}
+                              </p>
+                              <div className="inline-flex items-center gap-2 bg-white text-orange-600 px-6 py-3 rounded-full font-bold text-sm shadow-lg mt-4 group-hover:gap-3 transition-all">
+                                <span>View Portfolio</span>
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md hover:bg-white dark:hover:bg-gray-900 border-orange-200/50 dark:border-orange-800/50 shadow-xl transition-all duration-300 hover:scale-110" />
+                <CarouselNext className="right-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md hover:bg-white dark:hover:bg-gray-900 border-orange-200/50 dark:border-orange-800/50 shadow-xl transition-all duration-300 hover:scale-110" />
+              </Carousel>
+
+              {/* Progress indicator */}
+              <div className="flex justify-center mt-6 gap-2">
+                {projectsData.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      i === currentSlide
+                        ? "w-12 bg-orange-600"
+                        : "w-2 bg-gray-300 dark:bg-gray-600"
+                    }`}
+                  />
+                ))}
               </div>
             </motion.div>
           </div>
