@@ -3,9 +3,22 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import {
+  ArrowRight,
+  Code2,
+  Sparkles,
+  Users,
+  Zap,
+  Globe,
+  Laptop,
+  Database,
+  PenTool,
+  CheckCircle2,
+  TrendingUp,
+} from "lucide-react";
 import { NewsPortal } from "@/types/news-portals";
 import newsPortalsData from "@/data/news-portals.json";
 import projectsData from "@/data/projects.json";
@@ -20,82 +33,208 @@ import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+  const [clicks, setClicks] = React.useState(0);
+  const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true }),
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    }),
   );
+
+  const services = [
+    {
+      icon: Code2,
+      title: "Custom Web Development",
+      description:
+        "Tailored websites and web applications built with modern technologies to perfectly match your unique needs.",
+    },
+    {
+      icon: Laptop,
+      title: "Digital Presence Solutions",
+      description:
+        "Comprehensive digital strategies to establish and amplify your online presence and reach.",
+    },
+    {
+      icon: Database,
+      title: "Data Analysis & Visualization",
+      description:
+        "Transform complex data into actionable insights with advanced analytics and interactive visualizations.",
+    },
+    {
+      icon: PenTool,
+      title: "Research Communication",
+      description:
+        "Bridge the gap between academic research and public understanding through strategic content development.",
+    },
+    {
+      icon: Globe,
+      title: "Agency Support",
+      description:
+        "Partner with agencies to deliver exceptional digital solutions for their clients with technical excellence.",
+    },
+    {
+      icon: Sparkles,
+      title: "UI/UX Design",
+      description:
+        "Create intuitive, beautiful interfaces that enhance user experience and drive engagement.",
+    },
+  ];
+
+  const features = [
+    "Modern, Responsive Design",
+    "SEO Optimized",
+    "Lightning Fast Performance",
+    "Scalable Architecture",
+    "Security First Approach",
+    "Ongoing Support & Maintenance",
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
       <section className="relative overflow-hidden hero-background">
-        <div className="container mx-auto px-4 pt-32 pb-20 lg:pt-40 lg:pb-28">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center max-w-7xl mx-auto">
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 via-background to-orange-50/30 dark:from-orange-950/20 dark:via-background dark:to-orange-950/10"></div>
+        <div className="container relative mx-auto px-4 pt-24 pb-12 lg:pt-32 lg:pb-16">
+          <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="text-center space-y-8 mb-16"
             >
-              <div className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="inline-flex items-center rounded-full border bg-orange-50 dark:bg-orange-950/20 px-4 py-2 text-sm font-medium text-orange-600 dark:text-orange-400 shadow-sm"
-                >
-                  Transforming Research Impact
-                </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="inline-flex items-center rounded-full border bg-orange-50 dark:bg-orange-950/20 px-6 py-2 text-sm font-medium text-orange-600 dark:text-orange-400 shadow-sm"
+              >
+                <Sparkles className="mr-2 h-4 w-4" />
+                Custom Web Solutions & Digital Excellence
+              </motion.div>
 
-                <h1 className="text-4xl font-bold tracking-tight lg:text-5xl xl:text-6xl leading-tight">
-                  Amplify Your Research&apos;s
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 mt-2 pb-2">
-                    Digital Presence
-                  </span>
-                </h1>
+              <h1 className="text-4xl font-bold tracking-tight lg:text-6xl xl:text-7xl leading-tight max-w-5xl mx-auto">
+                We Build
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 mt-2 pb-2">
+                  Exceptional Digital Experiences
+                </span>
+              </h1>
 
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                  We help scholars amplify their research visibility and
-                  influence through expert web development, data analysis, and
-                  strategic public impact solutions.
-                </p>
-              </div>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                From custom websites to complex web applications, we help
+                researchers, agencies, and businesses establish a powerful
+                digital presence that drives real results.
+              </p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Button
-                  size="lg"
-                  className="group bg-orange-600 hover:bg-orange-700 text-white shadow-lg"
-                  asChild
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{
+                    y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+                    scale: { duration: 0.2 },
+                  }}
                 >
-                  <Link href="/contact">
-                    Get Started Today
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:border-orange-800"
-                  asChild
+                  <Button
+                    size="lg"
+                    className="group bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-2xl text-lg px-8 py-6 relative overflow-hidden"
+                    asChild
+                    onClick={() => setClicks(clicks + 1)}
+                  >
+                    <Link href="/contact">
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                        animate={{ x: [-200, 200] }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 2,
+                          ease: "linear",
+                        }}
+                      />
+                      Start Your Project
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{
+                    y: {
+                      repeat: Infinity,
+                      duration: 2,
+                      ease: "easeInOut",
+                      delay: 0.3,
+                    },
+                    scale: { duration: 0.2 },
+                  }}
                 >
-                  <Link href="/services">Explore Services</Link>
-                </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:border-orange-800 text-lg px-8 py-6 border-2"
+                    asChild
+                  >
+                    <Link href="/work">View Our Portfolio</Link>
+                  </Button>
+                </motion.div>
               </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Work Section */}
+      <section className="py-16 lg:py-20 bg-gradient-to-b from-background to-orange-50/20 dark:to-orange-950/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center space-y-4 mb-16"
+            >
+              <h2 className="text-3xl lg:text-5xl font-bold tracking-tight leading-tight">
+                Custom Sites & Web Applications
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Explore our portfolio of custom-built websites and web
+                applications that deliver exceptional results
+              </p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              viewport={{ once: true }}
+              className="relative w-full max-w-6xl mx-auto"
             >
               <Carousel
                 opts={{
                   align: "center",
                   loop: true,
+                  skipSnaps: false,
+                  dragFree: false,
                 }}
                 plugins={[plugin.current]}
                 className="w-full"
@@ -111,70 +250,98 @@ export default function Home() {
                   });
                 }}
               >
-                <CarouselContent>
-                  {projectsData.map((project, index) => (
-                    <CarouselItem key={project.id}>
-                      <Link href="/work" className="block group">
-                        <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                          <div className="relative aspect-[16/9]">
-                            <Image
-                              src={project.image}
-                              alt={project.title}
-                              fill
-                              className="object-cover transition-transform duration-700 group-hover:scale-105"
-                              priority={index === 0}
-                            />
+                <CarouselContent className="-ml-4">
+                  {projectsData.map((project, index) => {
+                    const isCenterSlide = index === currentSlide;
 
-                            {/* Always visible gradient overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-orange-600/40 to-transparent" />
-                          </div>
-
-                          {/* Content overlay - always visible */}
-                          <div className="absolute inset-0 flex items-center justify-center p-8">
-                            <div className="text-center space-y-4">
-                              <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white uppercase tracking-wider">
-                                Featured Work
-                              </span>
-                              <h3 className="text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
-                                {project.title}
-                              </h3>
-                              <p className="text-sm lg:text-base text-white/90 max-w-md mx-auto">
-                                {project.shortDescription}
-                              </p>
-                              <div className="inline-flex items-center gap-2 bg-white text-orange-600 px-6 py-3 rounded-full font-bold text-sm shadow-lg mt-4 group-hover:gap-3 transition-all">
-                                <span>View Portfolio</span>
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    return (
+                      <CarouselItem
+                        key={project.id}
+                        className="pl-4 basis-full sm:basis-1/2 md:basis-1/3"
+                      >
+                        <div className="p-1 h-full">
+                          <motion.div
+                            initial={false}
+                            animate={{
+                              scale: isCenterSlide ? 1.05 : 0.95,
+                              opacity: isCenterSlide ? 1 : 0.5,
+                            }}
+                            transition={{
+                              duration: 0.4,
+                              ease: [0.4, 0, 0.2, 1],
+                            }}
+                            className="h-full"
+                          >
+                            <div className="bg-card rounded-xl overflow-hidden border-2 border-orange-200/50 dark:border-orange-800/50 shadow-lg hover:shadow-xl hover:border-orange-400 dark:hover:border-orange-600 transition-all duration-300 h-full flex flex-col">
+                              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+                                <Image
+                                  src={project.image}
+                                  alt={project.title}
+                                  fill
+                                  className="object-cover"
+                                  priority={index === 0}
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                              </div>
+                              <div className="p-6 flex-1 flex items-center">
+                                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground line-clamp-2">
+                                  {project.title}
+                                </h3>
                               </div>
                             </div>
-                          </div>
+                          </motion.div>
                         </div>
-                      </Link>
-                    </CarouselItem>
-                  ))}
+                      </CarouselItem>
+                    );
+                  })}
                 </CarouselContent>
-                <CarouselPrevious className="left-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md hover:bg-white dark:hover:bg-gray-900 border-orange-200/50 dark:border-orange-800/50 shadow-xl transition-all duration-300 hover:scale-110" />
-                <CarouselNext className="right-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md hover:bg-white dark:hover:bg-gray-900 border-orange-200/50 dark:border-orange-800/50 shadow-xl transition-all duration-300 hover:scale-110" />
+                <CarouselPrevious className="left-0 -translate-x-1/2 bg-white dark:bg-gray-900 border-2 border-orange-200 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-950/50 shadow-lg hover:scale-105 transition-all" />
+                <CarouselNext className="right-0 translate-x-1/2 bg-white dark:bg-gray-900 border-2 border-orange-200 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-950/50 shadow-lg hover:scale-105 transition-all" />
               </Carousel>
 
               {/* Progress indicator */}
-              <div className="flex justify-center mt-6 gap-2">
+              <div className="flex justify-center mt-8 gap-2">
                 {projectsData.map((_, i) => (
-                  <div
+                  <motion.button
                     key={i}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       i === currentSlide
                         ? "w-12 bg-orange-600"
-                        : "w-2 bg-gray-300 dark:bg-gray-600"
+                        : "w-2 bg-gray-300 dark:bg-gray-600 hover:bg-orange-400 dark:hover:bg-orange-700"
                     }`}
+                    aria-label={`Go to slide ${i + 1}`}
                   />
                 ))}
               </div>
+
+              {/* View Portfolio Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="flex justify-center mt-8"
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg group px-8"
+                >
+                  <Link href="/work">
+                    View Full Portfolio
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-gradient-to-b from-background to-orange-50/20 dark:to-orange-950/10">
+      {/* Agency & Research Support Section */}
+      <section className="py-16 lg:py-20 bg-gradient-to-b from-orange-50/30 via-background to-orange-50/30 dark:from-orange-950/10 dark:via-background dark:to-orange-950/10">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -197,7 +364,7 @@ export default function Home() {
                     alt="About Relevant Research - Team collaboration"
                     width={600}
                     height={500}
-                    className="w-full h-auto rounded-2xl shadow-2xl"
+                    className="w-full h-auto rounded-2xl shadow-2xl border-2 border-orange-100 dark:border-orange-900/30"
                   />
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-orange-500/10 to-transparent"></div>
                 </div>
@@ -211,10 +378,10 @@ export default function Home() {
                 className="space-y-8 order-1 lg:order-2"
               >
                 <div className="space-y-4">
-                  <h2 className="text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
-                    Bridging Academic Excellence with
+                  <h2 className="text-3xl lg:text-5xl font-bold tracking-tight leading-tight">
+                    Empowering Researchers &
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 block mt-1">
-                      Digital Innovation
+                      Supporting Agencies
                     </span>
                   </h2>
                 </div>
@@ -225,28 +392,54 @@ export default function Home() {
                     <span className="font-semibold text-foreground">
                       Relevant Research
                     </span>
-                    , we believe that rigorous research communication can shape
-                    a better future. Our mission is to empower scholars by
-                    helping their work reach its full potential beyond the
-                    academic sphere.
+                    , we bridge the gap between academic excellence and digital
+                    innovation. Whether you&apos;re a researcher looking to
+                    amplify your work&apos;s impact or an agency seeking
+                    reliable technical partnership, we deliver solutions that
+                    exceed expectations.
                   </p>
 
                   <p className="text-lg">
-                    With personalized support and technical expertise, we enable
-                    researchers to focus on their core work while we handle the
-                    digital and strategic components.
+                    Our expertise in custom web development, data visualization,
+                    and digital strategy enables you to focus on what you do
+                    best while we handle the technical complexities.
                   </p>
+
+                  <div className="grid sm:grid-cols-2 gap-4 pt-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-semibold text-foreground">
+                          For Researchers
+                        </div>
+                        <div className="text-sm">
+                          Amplify your research impact
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-semibold text-foreground">
+                          For Agencies
+                        </div>
+                        <div className="text-sm">
+                          Reliable technical partnership
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     size="lg"
-                    className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg"
+                    className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg group"
                     asChild
                   >
-                    <Link href="/services">
-                      Discover Our Services
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                    <Link href="/contact">
+                      Partner With Us
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
                   <Button
@@ -264,7 +457,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-background to-orange-50/20 dark:to-orange-950/10">
+      {/* Featured Recognition Section */}
+      <section className="py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -274,12 +468,12 @@ export default function Home() {
             className="text-center space-y-12"
           >
             <div className="space-y-4">
-              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
+              <h2 className="text-3xl lg:text-5xl font-bold tracking-tight leading-tight">
                 Featured in Leading News Portals
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Our research and expertise have been recognized by major news
-                organizations worldwide
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Our research expertise and digital solutions have been
+                recognized by major news organizations worldwide
               </p>
             </div>
 
@@ -329,36 +523,6 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-
-            {/* Call to Action */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="pt-8"
-            >
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg"
-                  asChild
-                >
-                  <Link href="/contact">
-                    Start Your Project
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:border-orange-800"
-                  asChild
-                >
-                  <Link href="/work">View Our Portfolio</Link>
-                </Button>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
