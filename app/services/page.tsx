@@ -10,40 +10,40 @@ import Link from "next/link";
 const services = [
   {
     icon: Code,
-    title: "Web Development",
+    title: "Web & Mobile Development",
     description:
-      "Custom websites and applications to showcase your research and engage with your audience.",
+      "Beautiful, accessible, and fast digital products for researchers, labs, nonprofits, and projects. From personal academic sites and full research platforms to custom web and mobile applications for data collection and fieldwork, we build every product custom to your project.",
     features: [
-      "Custom Research Portfolios",
-      "Interactive Data Visualizations",
-      "Publication Repositories",
-      "Research Project Websites",
-      "Academic Lab Websites",
+      "Custom Research Portfolios & Lab Websites",
+      "Research Platforms & Publication Repositories",
+      "Web & Mobile Apps for Data Collection",
+      "Fieldwork & Survey Applications",
+      "Interactive Data Visualisation Sites",
     ],
   },
   {
     icon: Database,
-    title: "Data Analysis",
+    title: "Data Analysis & Visualisation",
     description:
-      "Transform complex research data into meaningful insights and visualizations.",
+      "Raw data is only useful when people can read it. We design data collection tools, build live dashboards, and create interactive trackers that turn complex datasets into public stories, invite curiosity, and inform decisions.",
     features: [
-      "Data Visualization",
-      "Statistical Analysis",
-      "Research Data Processing",
-      "Interactive Dashboards",
-      "Custom Analysis Tools",
+      "Data Collection Tools & Survey Platforms",
+      "Live Dashboards & Real-time Visualisation",
+      "Interactive Trackers & Ongoing Monitoring",
+      "Statistical Analysis & Data Processing",
+      "Public-facing Data Stories",
     ],
   },
   {
     icon: Users,
-    title: "Public Impact",
+    title: "Public Impact Strategy",
     description:
-      "Strategic solutions to amplify your research visibility and influence.",
+      "Great research shouldn't stop at publication. We help you reach journalists, policymakers, and the public through media outreach, content strategy, and communications that turn expertise into influence.",
     features: [
+      "Media Outreach & Press Relations",
+      "Content Strategy & Communications",
+      "Policymaker & Stakeholder Engagement",
       "Impact Strategy Development",
-      "Research Communication",
-      "Stakeholder Engagement",
-      "Media Outreach",
       "Public Engagement Campaigns",
     ],
   },
@@ -73,8 +73,9 @@ export default function ServicesPage() {
             Our <span className="gradient-text">Services</span>
           </motion.h1>
           <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            Comprehensive solutions tailored to enhance your research impact and
-            visibility
+            Three pillars. One end-to-end partnership. Every service flows into
+            the next so your research moves from raw findings to real-world
+            impact without losing momentum.
           </p>
         </div>
 
@@ -128,15 +129,17 @@ export default function ServicesPage() {
           <div className="flex flex-col items-center justify-between gap-4 text-center lg:flex-row lg:text-left">
             <div>
               <h2 className="text-2xl font-bold">
-                Ready to amplify your research impact?
+                Ready to amplify your research?
               </h2>
               <p className="mt-2 text-muted-foreground">
-                Let's discuss how we can help you reach a broader audience
+                A free 30-minute strategy call is all it takes to explore how
+                our end-to-end approach can help your work reach more people.
               </p>
             </div>
             <Button size="lg" asChild>
               <Link href="/contact">
-                Contact Us <ArrowRight className="ml-2 h-4 w-4" />
+                Book a free strategy call{" "}
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
