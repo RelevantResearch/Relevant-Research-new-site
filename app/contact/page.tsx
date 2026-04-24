@@ -38,7 +38,7 @@ export default function ContactPage() {
     try {
       // For now, just simulate a successful submission without reCAPTCHA
       // In production, you would uncomment the reCAPTCHA code
-      
+
       // const token = await recaptchaRef.current?.executeAsync();
       // recaptchaRef.current?.reset();
 
@@ -49,7 +49,7 @@ export default function ContactPage() {
       });
 
       const result = await response.json();
-      
+
       if (response.ok) {
         alert("Message sent successfully!");
         setForm({ name: "", email: "", subject: "", message: "" });
@@ -73,11 +73,12 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
           >
-            Get in <span className="gradient-text">Touch</span>
+            Book a free <span className="gradient-text">strategy call</span>
           </motion.h1>
           <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            Have a question or want to discuss a project? We'd love to hear from
-            you.
+            A free 30-minute call is all it takes to map your research goals,
+            your audience, and the digital tools that will help you reach them.
+            You leave with a clear plan — whether you work with us or not.
           </p>
         </div>
 
