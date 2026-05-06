@@ -9,15 +9,6 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Relevant Research</h3>
-            <p className="text-xs font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-400">
-              Where scholarship meets impact.
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Relevant Research is the end-to-end digital partner for scholars,
-              institutions, and mission-driven organisations. Strategy, data
-              collection, web and mobile apps, live dashboards, trackers, and
-              public impact — all under one roof.
-            </p>
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
@@ -39,7 +30,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-              <li>Email: contact@relevantresearch.com</li>
+              <li>Email: contact@relevant-research.com</li>
               <li>Address: Maryland, USA</li>
             </ul>
           </div>
