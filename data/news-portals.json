@@ -40,5 +40,19 @@
         "textSize": "text-lg",
         "width": "w-32",
         "description": "HuffPost - News and opinion"
+    },
+    {
+        "id": "washingtonpost",
+        "name": "Washington Post",
+        "displayName": "Washington Post",
+        "url": "https://www.washingtonpost.com/business/2026/05/04/ice-detention-centers-force/?pwapi_to[…]y1mb3JjZS8ifQ.qsBO317rcHIGPoD3_kTTEgt8GopHYTrKFSmzctctCYk",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/The_Logo_of_The_Washington_Post_Newspaper.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "colors": {
+            "from": "green-600",
+            "to": "green-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "Washington Post - News and opinion"
     }
 ]
