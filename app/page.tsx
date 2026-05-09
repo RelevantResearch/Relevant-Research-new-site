@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -27,14 +27,6 @@ import { NewsPortal } from "@/types/news-portals";
 import newsPortalsData from "@/data/news-portals.json";
 import projectsData from "@/data/projects.json";
 import clientsData from "@/data/client.json";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 function CyclingCell({
   clients,
@@ -75,9 +67,167 @@ function CyclingCell({
   );
 }
 
+// ── Project Slider ───────────────────────────────────────────────────────────
+
+const slideVariants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? "60%" : "-60%",
+    opacity: 0,
+  }),
+  center: { x: "0%", opacity: 1 },
+  exit: (dir: number) => ({
+    x: dir > 0 ? "-60%" : "60%",
+    opacity: 0,
+  }),
+};
+
+function ProjectSlider({ projects }: { projects: typeof projectsData }) {
+  const [current, setCurrent] = React.useState(0);
+  const [direction, setDirection] = React.useState(1);
+  const [paused, setPaused] = React.useState(false);
+  const total = projects.length;
+
+  const go = React.useCallback(
+    (dir: number) => {
+      setDirection(dir);
+      setCurrent((prev) => (prev + dir + total) % total);
+    },
+    [total],
+  );
+
+  const goTo = (i: number) => {
+    if (i === current) return;
+    setDirection(i > current ? 1 : -1);
+    setCurrent(i);
+  };
+
+  // Auto-scroll every 4 s, pauses on hover
+  React.useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => go(1), 4000);
+    return () => clearInterval(id);
+  }, [paused, go]);
+
+  const project = projects[current];
+
+  return (
+    <div
+      className="w-full"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Fixed-height card so every slide is identical size */}
+      <div className="relative overflow-hidden rounded-2xl border border-border shadow-xl bg-white dark:bg-zinc-900">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col md:flex-row md:h-[420px]"
+          >
+            {/* Left — Image (fixed size, never shrinks) */}
+            <div className="relative w-full md:w-[45%] aspect-[16/10] md:aspect-auto shrink-0 overflow-hidden">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 45vw"
+                priority={current === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/10 hidden md:block" />
+            </div>
+
+            {/* Right — Description (scrollable so long text never breaks height) */}
+            <div className="flex-1 flex flex-col justify-start gap-4 px-7 py-8 md:px-10 md:py-8 overflow-y-auto">
+              {/* counter badge */}
+              <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-orange-500">
+                <span className="text-orange-500/20 text-3xl font-black leading-none tabular-nums select-none">
+                  {String(current + 1).padStart(2, "0")}
+                </span>
+                <span className="h-px w-6 bg-orange-300" />
+                of {String(total).padStart(2, "0")}
+              </span>
+
+              <h3 className="text-xl md:text-2xl font-bold leading-snug tracking-tight">
+                {project.title}
+              </h3>
+
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {project.description}
+              </p>
+
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-600 hover:text-orange-500 transition-colors w-fit group/link mt-auto pt-2"
+                >
+                  Visit project
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5" />
+                </a>
+              )}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Prev button */}
+        <button
+          onClick={() => go(-1)}
+          aria-label="Previous project"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white/90 dark:bg-zinc-800/90 border border-border shadow-md hover:bg-orange-50 dark:hover:bg-zinc-700 transition-colors"
+        >
+          <ArrowRight className="h-4 w-4 rotate-180 text-foreground" />
+        </button>
+
+        {/* Next button */}
+        <button
+          onClick={() => go(1)}
+          aria-label="Next project"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white/90 dark:bg-zinc-800/90 border border-border shadow-md hover:bg-orange-50 dark:hover:bg-zinc-700 transition-colors"
+        >
+          <ArrowRight className="h-4 w-4 text-foreground" />
+        </button>
+
+        {/* Progress bar */}
+        {!paused && (
+          <motion.div
+            key={`progress-${current}`}
+            className="absolute bottom-0 left-0 h-[2px] bg-orange-500"
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 4, ease: "linear" }}
+          />
+        )}
+      </div>
+
+      {/* Dot indicators */}
+      <div className="flex justify-center mt-5 gap-2">
+        {projects.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            aria-label={`Go to project ${i + 1}`}
+            className={`rounded-full transition-all duration-300 ${
+              i === current
+                ? "w-7 h-2 bg-orange-600"
+                : "w-2 h-2 bg-gray-300 dark:bg-gray-600 hover:bg-orange-300"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-  const [heroSlide, setHeroSlide] = React.useState(0);
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
   const [clicks, setClicks] = React.useState(0);
   const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
@@ -89,10 +239,6 @@ export default function Home() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
-
-  const heroPlugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
-  );
 
   const heroSlides = [
     {
@@ -133,14 +279,6 @@ export default function Home() {
       visual: "presence",
     },
   ];
-
-  const plugin = React.useRef(
-    Autoplay({
-      delay: 3000,
-      stopOnInteraction: false,
-      stopOnMouseEnter: true,
-    }),
-  );
 
   const services = [
     {
@@ -383,15 +521,15 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Portfolio carousel */}
-        <div className="py-16">
+        {/* Portfolio — project slider */}
+        <div className="py-12">
           <div className="container mx-auto px-4">
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              viewport={{ once: false, amount: 0.1 }}
-              className="text-center mb-8 shrink-0"
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: false, amount: 0.2 }}
+              className="text-center mb-7"
             >
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
                 Our <span className="gradient-text">Work</span>
@@ -403,78 +541,14 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: false }}
             >
-              <Carousel
-                opts={{ align: "center", loop: true }}
-                plugins={[plugin.current]}
-                className="w-full"
-                onMouseEnter={plugin.current.stop}
-                onMouseLeave={plugin.current.reset}
-                setApi={(api) => {
-                  if (!api) return;
-                  setCurrentSlide(api.selectedScrollSnap());
-                  api.on("select", () =>
-                    setCurrentSlide(api.selectedScrollSnap()),
-                  );
-                }}
-              >
-                <CarouselContent className="-ml-4">
-                  {projectsData.map((project, index) => (
-                    <CarouselItem
-                      key={project.id}
-                      className="pl-4 basis-full sm:basis-1/2 md:basis-1/3"
-                    >
-                      <motion.div
-                        initial={false}
-                        animate={{
-                          scale: index === currentSlide ? 1.03 : 0.95,
-                          opacity: index === currentSlide ? 1 : 0.5,
-                        }}
-                        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                        className="rounded-xl overflow-hidden border-2 border-orange-200/50 dark:border-orange-800/50 shadow-lg hover:shadow-xl transition-all duration-300"
-                      >
-                        <div className="relative aspect-video bg-gray-100 dark:bg-gray-800">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            className="object-cover"
-                            priority={index === 0}
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                          />
-                        </div>
-                        <div className="p-4 bg-card">
-                          <h3 className="text-base font-bold line-clamp-2">
-                            {project.title}
-                          </h3>
-                        </div>
-                      </motion.div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="left-0 -translate-x-1/2 bg-white dark:bg-gray-900 border-2 border-orange-200 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-950/50 shadow-lg" />
-                <CarouselNext className="right-0 translate-x-1/2 bg-white dark:bg-gray-900 border-2 border-orange-200 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-950/50 shadow-lg" />
-              </Carousel>
+              <ProjectSlider projects={projectsData} />
 
-              {/* Dot indicators */}
-              <div className="flex justify-center mt-4 gap-2">
-                {projectsData.map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === currentSlide
-                        ? "w-8 bg-orange-600"
-                        : "w-1.5 bg-gray-300 dark:bg-gray-600"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center mt-7">
                 <Button
                   asChild
                   size="sm"
