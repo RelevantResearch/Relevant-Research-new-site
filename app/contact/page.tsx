@@ -93,13 +93,13 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />
-                  <p>contact@relevantresearch.com</p>
+                  <p>contact@relevant-research.com</p>
                 </div>
 
-                <div className="flex items-center gap-3">
+                {/* <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-primary" />
                   <p>Maryland, USA</p>
-                </div>
+                </div> */}
               </div>
             </div>
 

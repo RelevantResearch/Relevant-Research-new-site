@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Smooth theme transition via View Transitions API ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: theme-reveal 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0% at var(--vt-x, 50%) var(--vt-y, 10%));
+  }
+  to {
+    clip-path: circle(160% at var(--vt-x, 50%) var(--vt-y, 10%));
+  }
+}
+
+/* Fallback for browsers without View Transitions API */
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 0.9s ease-in-out, color 0.9s ease-in-out,
+    border-color 0.9s ease-in-out !important;
+}
+
+.theme-transitioning .animate-marquee {
+  transition: none !important;
+}
+
 :root {
   --primary: 24 100% 50%;
   --primary-foreground: 0 0% 100%;
@@ -74,6 +106,12 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Smooth snap scrolling */
+  .snap-container {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .gradient-text {
@@ -129,7 +167,7 @@
 }
 
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 .animate-marquee:hover {
