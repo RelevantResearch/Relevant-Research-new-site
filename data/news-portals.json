@@ -54,5 +54,187 @@
         "textSize": "text-lg",
         "width": "w-50",
         "description": "Washington Post - News and opinion"
+    },
+    {
+        "id": "losangeles_times",
+        "name": "Los Angeles Times",
+        "displayName": "Los Angeles Times",
+        "url": "https://www.latimes.com/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Los_Angeles_Times.svg/1920px-Los_Angeles_Times.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20220829030015",
+        "colors": {
+            "from": "green-600",
+            "to": "green-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "Los Angeles Times - News and opinion"
+    },
+    {
+        "id": "the_marshall_project",
+        "name": "The Marshall Project",
+        "displayName": "The Marshall Project",
+        "url": "https://www.themarshallproject.org/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/The_Marshall_Project_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "colors": {
+            "from": "green-600",
+            "to": "green-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "The Marshall Project - News and opinion"
+    },
+    {
+        "id": "the_new_republic",
+        "name": "The New Republic",
+        "displayName": "The New Republic",
+        "url": "https://newrepublic.com/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c7/The_New_Republic_wordmark_stacked.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "colors": {
+            "from": "green-600",
+            "to": "green-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "The New Republic - News and opinion"
+    },
+    {
+        "id": "calmatters",
+        "name": "CalMatters",
+        "displayName": "CalMatters",
+        "url": "https://calmatters.org/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/CalMatters_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "colors": {
+            "from": "green-600",
+            "to": "green-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "CalMatters - News and opinion"
+    },
+    {
+        "id": "pbs",
+        "name": "PBS",
+        "displayName": "PBS",
+        "url": "https://www.pbs.org/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/95/PBS_2019_ID_blue.webp?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "PBS - Public Broadcasting Service"
+    },
+    {
+        "id": "american_immigration_council",
+        "name": "American Immigration Council",
+        "displayName": "American Immigration Council",
+        "url": "https://www.americanimmigrationcouncil.org/",
+        "logoUrl": "https://www.akijp.org/wp-content/uploads/2016/12/ImmCouncil_Salsa.png",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "American Immigration Council - Advocacy and Research"
+    },
+    {
+        "id": "common_dreams",
+        "name": "Common Dreams",
+        "displayName": "Common Dreams",
+        "url": "https://www.commondreams.org/",
+        "logoUrl": "https://acrecampaigns.org/wp-content/uploads/2023/05/Common-Dreams-Logo.png",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "Common Dreams - Independent News"
+    },
+    {
+        "id": "colorado_public_radio",
+        "name": "Colorado Public Radio",
+        "displayName": "Colorado Public Radio",
+        "url": "https://www.cpr.org/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Colorado_Public_Radio_Logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "Colorado Public Radio - Public Broadcasting Service"
+    },
+    {
+        "id": "el_paso_times",
+        "name": "El Paso Times",
+        "displayName": "El Paso Times",
+        "url": "https://www.elpasotimes.com/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/80/El_Paso_Times_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "El Paso Times - News and opinion"
+    },
+    {
+        "id": "poynter",
+        "name": "Poynter",
+        "displayName": "Poynter",
+        "url": "https://www.poynter.org/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Poynter-logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20200614133158",
+        "colors": {
+            "from": "blue-600",
+            "to": "blue-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "Poynter - Journalism and Media"
+    },
+    {
+        "id": "american_community_media",
+        "name": "American Community Media",
+        "displayName": "American Community Media",
+        "url": "https://americancommunitymedia.org/",
+        "logoUrl": "https://americancommunitymedia.org/wp-content/uploads/2025/11/ACoM-Logo-Fade-Orange.png",
+        "colors": {
+            "from": "orange-600",
+            "to": "orange-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "American Community Media - News and Media"
+    },
+    {
+        "id": "border_report",
+        "name": "Border Report",
+        "displayName": "Border Report",
+        "url": "https://www.borderreport.com/",
+        "logoUrl": "https://www.borderreport.com/wp-content/uploads/sites/28/2019/07/65727498_2559031680781825_5963890015544016896_n.png",
+        "colors": {
+            "from": "red-600",
+            "to": "red-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "Border Report - News and Media"
+    },
+    {
+        "id": "center_for_immigration_studies",
+        "name": "Center for Immigration Studies",
+        "displayName": "Center for Immigration Studies",
+        "url": "https://www.cis.org/",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/4/46/Center_for_Immigration_Studies_logo.png/500px-Center_for_Immigration_Studies_logo.png",
+        "colors": {
+            "from": "green-600",
+            "to": "green-700"
+        },
+        "textSize": "text-lg",
+        "width": "w-50",
+        "description": "Center for Immigration Studies - Research and Analysis"
     }
 ]

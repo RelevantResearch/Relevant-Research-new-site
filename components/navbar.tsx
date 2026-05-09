@@ -23,10 +23,14 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center">
-          <span className="text-xl font-bold gradient-text">
-            Relevant Research
-          </span>
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/assets/images/logo.webp"
+            alt="Relevant Research Logo"
+            width={128}
+            height={128}
+            className="h-20 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Navigation */}
