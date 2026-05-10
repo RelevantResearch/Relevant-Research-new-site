@@ -277,7 +277,11 @@ export default function Home() {
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                     animate={{ x: [-200, 200] }}
-                    transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2.5,
+                      ease: "linear",
+                    }}
                   />
                   See our work
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -406,51 +410,41 @@ export default function Home() {
               <span className="h-px flex-1 bg-border" />
             </div>
 
-            <div className="relative overflow-hidden">
-              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-              <div className="flex overflow-hidden">
-                <div className="animate-marquee flex items-center gap-10 shrink-0">
-                  {[
-                    ...(newsPortalsData as NewsPortal[]),
-                    ...(newsPortalsData as NewsPortal[]),
-                  ].map((portal, index) => (
+            <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-4 sm:gap-x-6 sm:gap-y-5">
+              {(newsPortalsData as NewsPortal[]).map((portal) => (
+                <div
+                  key={portal.id}
+                  className="cursor-pointer flex items-center justify-center h-16 w-[130px] sm:w-[148px] bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200"
+                  title={portal.name}
+                  onClick={() =>
+                    window.open(portal.url, "_blank", "noopener,noreferrer")
+                  }
+                >
+                  {portal.logoUrl ? (
+                    <Image
+                      src={portal.logoUrl}
+                      alt={`${portal.name} logo`}
+                      width={112}
+                      height={40}
+                      className="h-8 sm:h-9 w-full object-contain transition-transform duration-300 hover:scale-105"
+                    />
+                  ) : (
                     <div
-                      key={`${portal.id}-${index}`}
-                      className="group cursor-pointer shrink-0"
-                      onClick={() =>
-                        window.open(portal.url, "_blank", "noopener,noreferrer")
-                      }
+                      className={`${portal.width} h-8 bg-gradient-to-r ${
+                        portal.colors.from === portal.colors.to
+                          ? `bg-${portal.colors.from}`
+                          : `from-${portal.colors.from} to-${portal.colors.to}`
+                      } rounded flex items-center justify-center`}
                     >
-                      {portal.logoUrl ? (
-                        <div className="w-28 h-10 rounded flex items-center justify-center bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200">
-                          <Image
-                            src={portal.logoUrl}
-                            alt={`${portal.name} logo`}
-                            width={112}
-                            height={40}
-                            className="max-w-full max-h-full object-contain p-2"
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={`${portal.width} h-9 bg-gradient-to-r ${
-                            portal.colors.from === portal.colors.to
-                              ? `bg-${portal.colors.from}`
-                              : `from-${portal.colors.from} to-${portal.colors.to}`
-                          } rounded flex items-center justify-center`}
-                        >
-                          <span
-                            className={`text-white font-bold ${portal.textSize}`}
-                          >
-                            {portal.displayName}
-                          </span>
-                        </div>
-                      )}
+                      <span
+                        className={`text-white font-bold ${portal.textSize}`}
+                      >
+                        {portal.displayName}
+                      </span>
                     </div>
-                  ))}
+                  )}
                 </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>
