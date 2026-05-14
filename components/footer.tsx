@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -8,11 +9,15 @@ export function Footer() {
       <div className="container px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Relevant Research</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Relevant Research helps scholars amplify their research visibility
-              and influence through innovative digital solutions.
-            </p>
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src="/assets/images/logo.webp"
+                alt="Relevant Research Logo"
+                width={72}
+                height={72}
+                className="h-30 w-auto object-contain"
+              />
+            </Link>
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
@@ -34,8 +39,8 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-              <li>Email: contact@relevantresearch.com</li>
-              <li>Address: Maryland, USA</li>
+              <li>Email: contact@relevant-research.com</li>
+              {/* <li>Address: Maryland, USA</li> */}
             </ul>
           </div>
           <div className="space-y-4">

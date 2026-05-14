@@ -12,35 +12,81 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
-  ExternalLink,
   Download,
   Users,
   BookOpen,
   ArrowRight,
-  Globe,
 } from "lucide-react";
 import Image from "next/image";
 import { Project, ResearchPaper } from "@/types/work";
 import projectsData from "@/data/projects.json";
 import researchData from "@/data/research-papers.json";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+// ── Work Card (vertical stack, matches home-page style) ───────────────────────
+function WorkCard({
+  project,
+  index,
+}: {
+  project: (typeof projectsData)[number];
+  index: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.55,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      viewport={{ once: true, amount: 0.15 }}
+      className="group flex flex-col sm:flex-row rounded-2xl border border-border shadow-sm bg-white dark:bg-zinc-900 overflow-hidden hover:shadow-lg hover:border-orange-200 dark:hover:border-orange-800 transition-all duration-300"
+    >
+      {/* Image */}
+      <div className="relative w-full sm:w-[42%] md:w-[38%] shrink-0 aspect-video sm:aspect-auto sm:min-h-[220px] md:min-h-[240px] overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-contain object-center transition-transform duration-500 group-hover:scale-[1.03]"
+          sizes="(max-width: 640px) 100vw, 40vw"
+          priority={index === 0}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/5 hidden sm:block" />
+      </div>
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+      {/* Content */}
+      <div className="flex flex-col justify-center gap-3 px-6 py-6 md:px-8 md:py-7 flex-1 min-w-0">
+        <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-orange-500">
+          <span className="text-orange-500/20 text-2xl font-black leading-none select-none tabular-nums">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="h-px w-5 bg-orange-300" />
+          Project
+        </span>
+        <h3 className="text-base sm:text-lg md:text-xl font-bold leading-snug tracking-tight">
+          {project.title}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          {project.shortDescription ?? project.description}
+        </p>
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-600 hover:text-orange-500 transition-colors w-fit group/link mt-1"
+          >
+            Visit project
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5" />
+          </a>
+        )}
+      </div>
+    </motion.div>
+  );
+}
 
 export default function WorkPage() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedPaper, setSelectedPaper] = useState<ResearchPaper | null>(
     null,
   );
@@ -77,14 +123,12 @@ export default function WorkPage() {
       <section className="pb-24">
         <div className="container mx-auto px-4 space-y-24">
           {/* Research Papers Section */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: 0.2 }}
               className="text-center space-y-4"
             >
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
@@ -100,7 +144,10 @@ export default function WorkPage() {
               {researchPapers.map((paper, index) => (
                 <motion.div
                   key={paper.id}
-                  variants={itemVariants}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: index * 0.08 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   whileHover={{ x: 8 }}
                   onClick={() => setSelectedPaper(paper)}
                   className="group cursor-pointer relative"
@@ -165,17 +212,15 @@ export default function WorkPage() {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Web Projects Section */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: 0.2 }}
               className="text-center space-y-4"
             >
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
@@ -187,104 +232,14 @@ export default function WorkPage() {
               </p>
             </motion.div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
+            <div className="max-w-5xl mx-auto space-y-5">
               {projects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -8 }}
-                  onClick={() => setSelectedProject(project)}
-                  className="group cursor-pointer relative"
-                >
-                  <Card className="overflow-hidden border bg-card shadow-sm hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 group-hover:border-orange-200 dark:group-hover:border-orange-800">
-                    {/* Background gradient effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-orange-600/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                    <div className="aspect-video overflow-hidden relative">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    </div>
-                    <CardContent className="p-6 space-y-4 relative z-10">
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-bold group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors text-foreground">
-                          {project.title}
-                        </h3>
-                        <p className="text-muted-foreground line-clamp-2 leading-relaxed">
-                          {project.shortDescription}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-end">
-                        <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium">
-                          View Details
-                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                <WorkCard key={project.id} project={project} index={index} />
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
-
-      {/* Project Modal */}
-      <Dialog
-        open={!!selectedProject}
-        onOpenChange={() => setSelectedProject(null)}
-      >
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-2xl">
-              {selectedProject?.title}
-            </DialogTitle>
-          </DialogHeader>
-
-          {selectedProject && (
-            <div className="space-y-6">
-              <div className="aspect-video overflow-hidden rounded-lg">
-                <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  width={800}
-                  height={450}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-lg mb-2">
-                    Project Overview
-                  </h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {selectedProject.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Button asChild className="flex-1">
-                  <a
-                    href={selectedProject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Visit Website
-                  </a>
-                </Button>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
 
       {/* Research Paper Modal */}
       <Dialog
