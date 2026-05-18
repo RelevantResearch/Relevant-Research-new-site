@@ -3,7 +3,7 @@
         "id": "guardian",
         "name": "The Guardian",
         "displayName": "Guardian",
-        "url": "https://www.theguardian.com/us-news/2025/sep/26/ice-detention-death-toll-trump",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/The_Guardian_2018.svg/500px-The_Guardian_2018.svg.png",
         "colors": {
             "from": "blue-600",
@@ -17,7 +17,7 @@
         "id": "cbs42",
         "name": "CBS42",
         "displayName": "CBS42",
-        "url": "https://www.cbs42.com/border-report-tour/new-online-data-dashboard-tracks-ice-arrests/",
+        "url": "",
         "logoUrl": "https://www.cbs42.com/wp-content/uploads/sites/81/2019/05/cropped-cbs204220logo20for20website20cbs42.com_1541089550527.png_60904154_ver1.0.png",
         "colors": {
             "from": "blue-600",
@@ -31,7 +31,7 @@
         "id": "huffpost",
         "name": "HuffPost",
         "displayName": "HuffPost",
-        "url": "https://www.huffpost.com/entry/alligator-alcatraz-immigration-jail_n_68d6a319e4b0185d00688297",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/HuffPost.svg/500px-HuffPost.svg.png",
         "colors": {
             "from": "green-600",
@@ -45,7 +45,7 @@
         "id": "washingtonpost",
         "name": "Washington Post",
         "displayName": "Washington Post",
-        "url": "https://www.washingtonpost.com/business/2026/05/04/ice-detention-centers-force/?pwapi_to[…]y1mb3JjZS8ifQ.qsBO317rcHIGPoD3_kTTEgt8GopHYTrKFSmzctctCYk",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/The_Logo_of_The_Washington_Post_Newspaper.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
         "colors": {
             "from": "green-600",
@@ -59,7 +59,7 @@
         "id": "losangeles_times",
         "name": "Los Angeles Times",
         "displayName": "Los Angeles Times",
-        "url": "https://www.latimes.com/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Los_Angeles_Times.svg/1920px-Los_Angeles_Times.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20220829030015",
         "colors": {
             "from": "green-600",
@@ -73,7 +73,7 @@
         "id": "the_marshall_project",
         "name": "The Marshall Project",
         "displayName": "The Marshall Project",
-        "url": "https://www.themarshallproject.org/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/The_Marshall_Project_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
         "colors": {
             "from": "green-600",
@@ -87,7 +87,7 @@
         "id": "the_new_republic",
         "name": "The New Republic",
         "displayName": "The New Republic",
-        "url": "https://newrepublic.com/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c7/The_New_Republic_wordmark_stacked.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
         "colors": {
             "from": "green-600",
@@ -101,7 +101,7 @@
         "id": "calmatters",
         "name": "CalMatters",
         "displayName": "CalMatters",
-        "url": "https://calmatters.org/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/CalMatters_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
         "colors": {
             "from": "green-600",
@@ -115,7 +115,7 @@
         "id": "pbs",
         "name": "PBS",
         "displayName": "PBS",
-        "url": "https://www.pbs.org/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/95/PBS_2019_ID_blue.webp?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
         "colors": {
             "from": "blue-600",
@@ -129,7 +129,7 @@
         "id": "american_immigration_council",
         "name": "American Immigration Council",
         "displayName": "American Immigration Council",
-        "url": "https://www.americanimmigrationcouncil.org/",
+        "url": "",
         "logoUrl": "https://www.akijp.org/wp-content/uploads/2016/12/ImmCouncil_Salsa.png",
         "colors": {
             "from": "blue-600",
@@ -143,7 +143,7 @@
         "id": "common_dreams",
         "name": "Common Dreams",
         "displayName": "Common Dreams",
-        "url": "https://www.commondreams.org/",
+        "url": "",
         "logoUrl": "https://acrecampaigns.org/wp-content/uploads/2023/05/Common-Dreams-Logo.png",
         "colors": {
             "from": "blue-600",
@@ -157,7 +157,7 @@
         "id": "colorado_public_radio",
         "name": "Colorado Public Radio",
         "displayName": "Colorado Public Radio",
-        "url": "https://www.cpr.org/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Colorado_Public_Radio_Logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
         "colors": {
             "from": "blue-600",
@@ -171,7 +171,7 @@
         "id": "el_paso_times",
         "name": "El Paso Times",
         "displayName": "El Paso Times",
-        "url": "https://www.elpasotimes.com/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/80/El_Paso_Times_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
         "colors": {
             "from": "blue-600",
@@ -185,7 +185,7 @@
         "id": "poynter",
         "name": "Poynter",
         "displayName": "Poynter",
-        "url": "https://www.poynter.org/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Poynter-logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20200614133158",
         "colors": {
             "from": "blue-600",
@@ -199,7 +199,7 @@
         "id": "american_community_media",
         "name": "American Community Media",
         "displayName": "American Community Media",
-        "url": "https://americancommunitymedia.org/",
+        "url": "",
         "logoUrl": "https://americancommunitymedia.org/wp-content/uploads/2025/11/ACoM-Logo-Fade-Orange.png",
         "colors": {
             "from": "orange-600",
@@ -213,7 +213,7 @@
         "id": "border_report",
         "name": "Border Report",
         "displayName": "Border Report",
-        "url": "https://www.borderreport.com/",
+        "url": "",
         "logoUrl": "https://www.borderreport.com/wp-content/uploads/sites/28/2019/07/65727498_2559031680781825_5963890015544016896_n.png",
         "colors": {
             "from": "red-600",
@@ -227,7 +227,7 @@
         "id": "center_for_immigration_studies",
         "name": "Center for Immigration Studies",
         "displayName": "Center for Immigration Studies",
-        "url": "https://www.cis.org/",
+        "url": "",
         "logoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/4/46/Center_for_Immigration_Studies_logo.png/500px-Center_for_Immigration_Studies_logo.png",
         "colors": {
             "from": "green-600",
