@@ -293,7 +293,7 @@ export default function Home() {
                 className="hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:border-orange-800 text-lg px-8 py-6 border-2"
                 asChild
               >
-                <Link href="/contact">Book a free call</Link>
+                <Link href="/contact">Contact</Link>
               </Button>
             </div>
           </motion.div>

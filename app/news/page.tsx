@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Pagination,
@@ -15,7 +13,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { ExternalLink, Calendar, Building2 } from "lucide-react";
+import { Calendar, Building2 } from "lucide-react";
 import enrichedNewsData from "@/data/enriched-news.json";
 
 interface NewsItem {
@@ -107,21 +105,6 @@ function NewsRow({ news, index }: NewsRowProps) {
               Author: {news.author}
             </span>
           </p>
-
-          {/* Action */}
-          <div className="flex items-center justify-between">
-            {/* <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <Building2 className="w-4 h-4" />
-              <span className="font-medium">{news.domain}</span>
-            </div> */}
-
-            <Button asChild variant="outline" size="sm" className="group/btn">
-              <Link href={news.url} target="_blank" rel="noopener noreferrer">
-                Read Article
-                <ExternalLink className="w-3 h-3 ml-2 transition-transform group-hover/btn:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
         </div>
       </div>
     </motion.div>
