@@ -8,8 +8,8 @@
         "link": "https://detentionpregnancytracker.com/"
     },
     {
-        "id": "ice-detention-dashboard",
-        "title": "ICE Detention Dashboard",
+        "id": "ice-detention-report",
+        "title": "ICE Detention Report",
         "description": "The recent growth of immigrant detention generated new demands for facility-level data from reporters, policymakers, and researchers. To respond to this urgent need, Relevant Research’s Adam Sawyer developed the Interval Average Daily Population (ADP) method for finding current detained populations at individual facilities, then built a super-stable platform using a static website generator for aggregating facility-level data that quickly became the go-to source for information about detention.",
         "shortDescription": "The recent growth of immigrant detention generated new demands for facility-level data from reporters, policymakers, and researchers. To respond to this urgent need, Relevant Research’s Adam Sawyer developed the Interval Average Daily Population (ADP) method for finding current detained populations at individual facilities, then built a super-stable platform using a static website generator for aggregating facility-level data that quickly became the go-to source for information about detention.",
         "image": "/assets/images/works/ice-detentation.webp",
